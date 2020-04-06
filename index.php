@@ -1,49 +1,80 @@
-<?php
-
-?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Demo Create and Consume Simple REST API in PHP - AllPHPTricks.com</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Rapid Portal</title>
 </head>
 <body>
-<div style="width:700px; margin:0 auto;">
+    <div class="container-fluid">
+    </div>
+</body>
 
-<h3>A SIMPLE WEBPLATFORM THAT CONSUMES REST API in PHP</h3>   
-<form action="" method="POST">
-<label>Enter Order ID:</label><br />
-<input type="text" name="order_id" placeholder="Enter Order ID" required/>
-<br /><br />
-<button type="submit" name="submit">Submit</button>
-</form>    
 
 <?php
-if (isset($_POST['order_id']) && $_POST['order_id']!="") {
-	$order_id = $_POST['order_id'];
-	$url = "http://localhost:8080/api/api/".$order_id;
-	
-	$client = curl_init($url);
-	curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
-	$response = curl_exec($client);
-	
-	$result = json_decode($response);
-	
-	echo "<table>";
-	echo "<tr><td>Order ID:</td><td>$result->order_id</td></tr>";
-	echo "<tr><td>Amount:</td><td>$result->amount</td></tr>";
-	echo "<tr><td>Response Code:</td><td>$result->response_code</td></tr>";
-	echo "<tr><td>Response Desc:</td><td>$result->response_desc</td></tr>";
-	echo "</table>";
-}
-    ?>
+$api = "http://15.188.147.46/api/";
+$endpoint = "get_all_inbound_transactions";
+$url = $api.$endpoint;
 
-<br />
-<strong>Current Order IDs for Demo:</strong><br />
-15478952<br />
-15478955<br />
-15478958<br />
-15478959
-<br /><br />
+$client = curl_init($url);
+curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
+$response = curl_exec($client);
+$result = json_decode($response);
+$info_array = ($result->response);
+
+
+echo "
+    <div class=\"container\">
+    <table class=\"table\">
+    <thead>
+        <tr class=\"thead-dark\">
+        <th scope=\"col\">#</th>
+        <th scope=\"col\">Customer Name</th>
+        <th scope=\"col\">Mobile Number</th>
+        <th scope=\"col\">Bank Account No</th>
+        <th scope=\"col\">Insurance Policy No</th>
+        <th scope=\"col\">Service Type</th>
+        <th scope=\"col\">Product Type</th>
+        <th scope=\"col\">Amount</th>
+        <th scope=\"col\">Channel</th>
+        <th scope=\"col\">Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+    ";
+for($i = 0; $i < count($info_array); $i++){
+    echo "<tr>";
+    echo "<th>".$info_array[$i]->id."</th>";
+    echo "<th>".$info_array[$i]->customer_name."</th>";
+    echo "<th>".$info_array[$i]->mobile_number."</th>";
+    echo "<th>".$info_array[$i]->bank_ccount_number."</th>";
+    echo "<th>".$info_array[$i]->insurance_policy_number."</th>";
+    echo "<th>".$info_array[$i]->service_type."</th>";
+    echo "<th>".$info_array[$i]->product_type."</th>";
+    echo "<th>".$info_array[$i]->amount."</th>";
+    echo "<th>".$info_array[$i]->channel."</th>";
+    $date_formatted = new date($info_array[$i]->created_at);
+    echo "<th>".$date_formatted."</th>";
+    echo "</tr>";
+}
+echo 
+"
+    </tbody>
+    </table>
 </div>
-</body>
+"
+
+
+?>
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src=""></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 </html>
