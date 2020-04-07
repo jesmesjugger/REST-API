@@ -61,7 +61,7 @@ function register(){
 
 			$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
 			$_SESSION['success']  = "You are now logged in";
-			header('location: index.php');				
+			header('location: dashboard.php');				
 		}
 	}
 }
@@ -104,7 +104,7 @@ function isLoggedIn()
 if (isset($_GET['logout'])) {
 	session_destroy();
 	unset($_SESSION['user']);
-	header("location: login.php");
+	header("location: index.php");
 }
 // call the login() function if register_btn is clicked
 if (isset($_POST['login_btn'])) {
@@ -146,7 +146,7 @@ function login(){
 				$_SESSION['user'] = $logged_in_user;
 				$_SESSION['success']  = "You are now logged in";
 
-				header('location: index.php');
+				header('location: dashboard.php');
 			}
 		}else {
 			array_push($errors, "Wrong username/password combination");
