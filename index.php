@@ -54,8 +54,7 @@ for($i = 0; $i < count($info_array); $i++){
     echo "<th>".$info_array[$i]->product_type."</th>";
     echo "<th>".$info_array[$i]->amount."</th>";
     echo "<th>".$info_array[$i]->channel."</th>";
-    $date_formatted = new date($info_array[$i]->created_at);
-    echo "<th>".$date_formatted."</th>";
+    echo "<th>".$info_array[$i]->created_at."</th>";
     echo "</tr>";
 }
 echo 
