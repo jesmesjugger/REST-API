@@ -15,7 +15,7 @@
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Portal</a>
             <a href="#" class=".logout-spn ml-auto mr-3" style="color:#fff;">LOGOUT</a>
             <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,12 +23,11 @@
             </button>
         </nav><!-- END NAV TOP  -->
 
-    
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="active-link">
-                        <a href="index.php">Dashboard</a>
+                        <a href="dashboard.php">Dashboard</a>
                     </li>
                     <!-- <li>
                             <a href="#">UI Elements</a>
@@ -54,13 +53,13 @@
                 </ul>
             </div>
         </nav><!-- END NAV SIDE  -->
-
         <div id="page-wrapper">
             <div id="page-inner">
-                <div class="container table-container">
-                    <h3>Inbound Transactions</h3>
-                    <div id="inboundTableDiv">
-                        <table id="inboundTable" class="table">
+
+                <div class="table-container">
+                    <h3><b>Inbound Transactions</b></h3>
+                    <div class="tableDiv">
+                        <table id="inboundTable" class="table cell-border data-table">
                             <thead>
                                 <tr class="thead-dark">
                                     <th scope="col">#</th>
@@ -83,15 +82,16 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $api = "http://15.188.147.46/api/";
-                                    $endpoint = "get_all_inbound_transactions";
-                                    $url = $api.$endpoint;
+                                    $username = "tsmith";
+                                    $password = "1234";
+                                    $payload = "claim";
+                                    $url = "http://15.188.147.46/api/request?username=\"$username\"&pass=\"$password\"&payload=\"$payload\"";
 
                                     $client = curl_init($url);
                                     curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
                                     $response = curl_exec($client);
                                     $result = json_decode($response);
-                                    $info_array = ($result->response);                        
+                                    $info_array = ($result->RequestData);                        
                                     
                                     for($i = 0; $i < count($info_array); $i++){
                                         echo "<tr>";
@@ -116,11 +116,60 @@
                                 ?>
                             </tbody>
                         </table>
-                    </div> <!-- end #inboundTableDiv div -->
+                    </div> <!-- end #tableDiv w/ claims -->
                 </div> <!-- end .Table-Container div -->
+
+                <div class="table-container">
+                    <h3><b>Inbound Inquiries</b></h3>
+                    <div class="tableDiv">
+                        <table class="table data-table">
+                            <thead>
+                                <tr class="thead-dark">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Inquiry Type</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Form ID</th>
+                                    <th scope="col">Status ID</th>
+                                    <th scope="col">Created at</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $username = "tsmith";
+                                    $password = "1234";
+                                    $payload = "inquiry";
+                                    $url = "http://15.188.147.46/api/request?username=\"$username\"&pass=\"$password\"&payload=\"$payload\"";
+
+                                    $client = curl_init($url);
+                                    curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
+                                    $response = curl_exec($client);
+                                    $result = json_decode($response);
+                                    $info_array = ($result->RequestData);                        
+                                    
+                                    for($i = 0; $i < count($info_array); $i++){
+                                        echo "<tr>";
+                                        echo "<th>".$info_array[$i]->id."</th>";
+                                        echo "<th>".$info_array[$i]->name."</th>";
+                                        echo "<th>".$info_array[$i]->telephone_number."</th>";
+                                        echo "<th>".$info_array[$i]->inquiry_type."</th>";
+                                        echo "<th>".$info_array[$i]->product_name."</th>";
+                                        echo "<th>".$info_array[$i]->form_id."</th>";
+                                        echo "<th>".$info_array[$i]->status_id."</th>";
+                                        echo "<th>".$info_array[$i]->created_at."</th>";
+                                        echo "</tr>";
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div> <!-- end #tableDiv w/ inquiry -->
+                </div> <!-- end .Table-Container div -->
+
+
+
             </div><!-- END PAGE INNER  -->
         </div><!-- END PAGE WRAPPER  -->
-
         <!-- <div class="footer">
             <div class="row">
                     <div class="col-lg-12">

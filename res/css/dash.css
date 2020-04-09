@@ -4,9 +4,14 @@ body {
 
 .table-container {
     margin: 3rem auto 3rem auto;
-    border: 1px solid #c7c7c7;
+    border: 1px solid #c7c7c7b7;
 }
 
-#inboundTableDiv {
+.tableDiv{
     overflow-x: auto;
+}
+
+.data-table{
+    table-layout: auto;
+    width: 100%;
 }
