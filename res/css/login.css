@@ -1,0 +1,102 @@
+* { margin: 0px; padding: 0px; }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../img/dialog-bgnd.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.card {
+    width: 35rem;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.card-header {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+}
+
+.form_btn {
+    display: block;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Manrope', sans-serif;
+}
+
+.logo-overlay {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    background: linear-gradient(to top right,#049875 0,#8dc63f);
+    width: 55px;
+    top: 0;
+    left: 25px;
+    z-index: 9;
+}
+
+.log-overlay .brand-logo{
+    max-width: 100%;
+}
+
+.brand-logo{
+    width: 55px;
+    padding: 54px 7px 13px;
+    vertical-align: middle;
+}
+
+.form-control:focus {
+    border: 1px solid #049875;
+    box-shadow: 2px 5px 8px rgb(228, 251, 224);
+    color: black;
+}
+
+.error {
+    margin-top: 15px;
+    text-align: center;
+    color: #be2926; 
+}
+  
+@media only screen and (max-device-width: 768px){
+    .card{
+        width: 23rem;
+    }
+
+    body {
+        background-position-y: 0%;
+    }
+}
+
+@media only screen and (max-device-width: 600px){
+    .card{
+        width: 23rem;
+        background: rgba(255, 255, 255, 1);
+    }
+
+    body {
+        background: rgb(233, 250, 231);
+    }
+}
+
+@media only screen and (max-device-width: 425px){
+    .card{
+        width: 16rem;
+        background: rgba(255, 255, 255, 1);
+    }
+    body {
+        background: rgb(233, 250, 231);
+    }
+}
+  
+@media only screen and (max-device-width: 320px){  
+    .card{
+        width: 14rem;
+        background: rgba(255, 255, 255, 1);
+    }
+    body {
+        background: rgb(233, 250, 231);
+    }
+}
+  
