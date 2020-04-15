@@ -37,13 +37,13 @@ if (!isLoggedIn()) {
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li class="active-link">
+                    <li>
                         <a href="dashboard.php">Dashboard</a>
                     </li>
                     <li>
                         <a href="inbound-inquiry.php">Inbound Inquiry</a>
                     </li>
-                    <li>
+                    <li class="active-link">
                         <a href="inbound-transaction.php">Inbound Transactions</a>
                     </li>
                 <!-- <li>
@@ -113,44 +113,6 @@ if (!isLoggedIn()) {
                         </tbody>
                     </table>
                 </div> <!-- end #tableDiv w/ claims -->
-            </div> <!-- end .Table-Container div -->
-
-            <div class="table-container mt-5">
-                <h3><b>Inbound Inquiries</b></h3>
-                <div class="tableDiv">
-                    <table class="table data-table">
-                        <thead>
-                            <tr class="thead-dark">
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Inquiry Type</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Form ID</th>
-                                <th scope="col">Status ID</th>
-                                <th scope="col">Created at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $result = getResultObject("inquiry");
-                                $info_array = ($result->RequestData);                      
-                                for($i = 0; $i < count($info_array); $i++){
-                                    echo "<tr>";
-                                    echo "<th>".$info_array[$i]->id."</th>";
-                                    echo "<th>".$info_array[$i]->name."</th>";
-                                    echo "<th>".$info_array[$i]->telephone_number."</th>";
-                                    echo "<th>".$info_array[$i]->inquiry_type."</th>";
-                                    echo "<th>".$info_array[$i]->product_name."</th>";
-                                    echo "<th>".$info_array[$i]->form_id."</th>";
-                                    echo "<th>".$info_array[$i]->status_id."</th>";
-                                    echo "<th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</th>";
-                                    echo "</tr>";
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-                </div> <!-- end #tableDiv w/ inquiry -->
             </div> <!-- end .Table-Container div -->
         </div><!-- END PAGE WRAPPER  -->
 

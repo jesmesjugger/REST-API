@@ -8,20 +8,13 @@ body {
 
 #wrapper {
     width: 100%;
+    background-color: #02664f;
 }
 
 #page-wrapper {
-    padding: 15px 15px;
+    padding: 25px;
     min-height: 600px;
-    background: #F3F3F3;
-}
-
-#page-inner {
-    width: 100%;
-    margin: 10px 20px 10px 0px;
-    background-color: #fff !important;
-    padding: 10px;
-    min-height: 1050px;
+    background: #ffffff;
 }
 
 .pad-top {
@@ -38,41 +31,41 @@ body {
 }
 
 .sidebar-collapse>.nav>li>a {
-    color: #214761;
+    color: white;
     font-weight: 900;
     font-size: 16px;
     padding: 0px;
 }
 
 .sidebar-collapse>.nav>li {
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid rgba(225, 225, 225, 0.4);
     padding: 15px 10px;
 }
 
 .sidebar-collapse .nav>li:hover,
 .sidebar-collapse .nav>li:focus {
-    background: #F3F3F3;
+    color: black;
     outline: 0;
 }
 
 .navbar-side {
     border: none;
-    background-color: #fff;
+    background-color: inherit;
 }
 
-.nav>li>a>i {
-    margin-right: 10px;
-}
-
-.logout-spn {
+/* .logout-spn {
     color: #fff;
     font-size: 25px;
-    font-weight: 800;
+    font-weight: 500;
     text-decoration: none;
-}
+} */
 
 .active-link {
-    background-color: #f3f3f3;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.active-link>a{
+    color: black !important;
 }
 
 .hidden {
@@ -120,7 +113,7 @@ body {
 @media(min-width:768px) {
     #page-wrapper {
         margin: 0 0 0 260px;
-        padding: 15px 30px;
+        padding: auto 30px;
         min-height: 1050px;
     }
 

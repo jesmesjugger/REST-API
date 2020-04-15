@@ -59,7 +59,7 @@ body {
     color: #be2926; 
 }
   
-@media only screen and (max-device-width: 768px){
+@media only screen and (max-width: 768px){
     .card{
         width: 23rem;
     }
@@ -69,7 +69,7 @@ body {
     }
 }
 
-@media only screen and (max-device-width: 600px){
+@media only screen and (max-width: 600px){
     .card{
         width: 23rem;
         background: rgba(255, 255, 255, 1);
@@ -80,7 +80,7 @@ body {
     }
 }
 
-@media only screen and (max-device-width: 425px){
+@media only screen and (max-width: 425px){
     .card{
         width: 16rem;
         background: rgba(255, 255, 255, 1);
@@ -90,7 +90,7 @@ body {
     }
 }
   
-@media only screen and (max-device-width: 320px){  
+@media only screen and (max-width: 320px){  
     .card{
         width: 14rem;
         background: rgba(255, 255, 255, 1);

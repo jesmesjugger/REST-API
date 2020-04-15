@@ -1,4 +1,4 @@
-<?php include('functions.php') ?>
+<?php include('include/functions.php') ?>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="res/css/login.css">
-	<title>Registration system PHP and MySQL</title>
+	<title>OM Portal</title>
 </head>
 <body>
 	<div class="container-fluid">

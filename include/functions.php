@@ -14,6 +14,18 @@ if (isset($_POST['register_btn'])) {
 	register();
 }
 
+// call the login() function if register_btn is clicked
+if (isset($_POST['login_btn'])) {
+	login();
+}
+
+// logout
+if (isset($_GET['logout_btn'])) {
+	session_destroy();
+	unset($_SESSION['user']);
+	header("location: index.php");
+}
+
 // REGISTER USER
 function register(){
 	// call these variables with the global keyword to make them available in function
@@ -50,7 +62,7 @@ function register(){
 					  VALUES('$username', '$email', '$user_type', '$password')";
 			mysqli_query($db, $query);
 			$_SESSION['success']  = "New user successfully created!!";
-			header('location: home.php');
+			header('location: ../home.php');
 		}else{
 			$query = "INSERT INTO users (username, email, user_type, password) 
 					  VALUES('$username', '$email', 'user', '$password')";
@@ -61,7 +73,7 @@ function register(){
 
 			$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
 			$_SESSION['success']  = "You are now logged in";
-			header('location: dashboard.php');				
+			header('location: ../dashboard.php');				
 		}
 	}
 }
@@ -101,15 +113,8 @@ function isLoggedIn()
 		return false;
 	}
 }
-if (isset($_GET['logout'])) {
-	session_destroy();
-	unset($_SESSION['user']);
-	header("location: index.php");
-}
-// call the login() function if register_btn is clicked
-if (isset($_POST['login_btn'])) {
-	login();
-}
+
+
 
 // LOGIN USER
 function login(){
@@ -138,10 +143,10 @@ function login(){
 			// check if user is admin or user
 			$logged_in_user = mysqli_fetch_assoc($results);
 			if ($logged_in_user['user_type'] == 'admin') {
-
 				$_SESSION['user'] = $logged_in_user;
 				$_SESSION['success']  = "You are now logged in";
-				header('location: admin/home.php');		  
+				header('location: home.php');
+
 			}else{
 				$_SESSION['user'] = $logged_in_user;
 				$_SESSION['success']  = "You are now logged in";
@@ -153,6 +158,7 @@ function login(){
 		}
 	}
 }
+
 function isAdmin()
 {
 	if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin' ) {
