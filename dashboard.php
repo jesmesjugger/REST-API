@@ -24,7 +24,8 @@ if (!isLoggedIn()) {
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"><img src="res/img/om_text_logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="dashboard.php"><img src="res/img/om_text_logo.png" alt="logo"></a>
+            <a href="profile.php" class="user-profile ml-auto mr-3"><i class="fa fa-user-circle"></i></a>
             <form action="index.php" method="get">
                 <button id="logout_btn" class=".logout-spn ml-auto mr-3" name="logout_btn">LOGOUT</a>
             </form>
@@ -86,7 +87,7 @@ if (!isLoggedIn()) {
                         </thead>
                         <tbody>
                             <?php
-                                $result = getResultObject("claim");
+                                $result = getResultObject("transaction");
                                 $info_array = ($result->RequestData);                        
                                 
                                 for($i = 0; $i < count($info_array); $i++){

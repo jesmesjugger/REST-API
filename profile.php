@@ -29,9 +29,8 @@ if (!isLoggedIn()) {
             <form action="index.php" method="get">
                 <button id="logout_btn" class=".logout-spn ml-auto mr-3" name="logout_btn">LOGOUT</a>
             </form>
-            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target=".sidebar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav><!-- END NAV TOP  -->
@@ -42,7 +41,7 @@ if (!isLoggedIn()) {
                     <li>
                         <a href="dashboard.php">Dashboard</a>
                     </li>
-                    <li class="active-link">
+                    <li>
                         <a href="inbound-inquiry.php">Inbound Inquiry</a>
                     </li>
                     <li>
@@ -62,43 +61,10 @@ if (!isLoggedIn()) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <div class="table-container mt-5">
-                <h3><b>Inbound Inquiries</b></h3>
-                <div class="tableDiv">
-                    <table class="table data-table">
-                        <thead>
-                            <tr class="thead-dark">
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Inquiry Type</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Form ID</th>
-                                <th scope="col">Status ID</th>
-                                <th scope="col">Created at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $result = getResultObject("inquiry");
-                                $info_array = ($result->RequestData);                      
-                                for($i = 0; $i < count($info_array); $i++){
-                                    echo "<tr>";
-                                    echo "<th>".$info_array[$i]->id."</th>";
-                                    echo "<th>".$info_array[$i]->name."</th>";
-                                    echo "<th>".$info_array[$i]->telephone_number."</th>";
-                                    echo "<th>".$info_array[$i]->inquiry_type."</th>";
-                                    echo "<th>".$info_array[$i]->product_name."</th>";
-                                    echo "<th>".$info_array[$i]->form_id."</th>";
-                                    echo "<th>".$info_array[$i]->status_id."</th>";
-                                    echo "<th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</th>";
-                                    echo "</tr>";
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-                </div> <!-- end #tableDiv w/ inquiry -->
-            </div> <!-- end .Table-Container div -->
+            <div id="profile-section" class="text-center">
+                <p><i id="profile-section-icon" class="fa fa-user-circle"></i></p>
+                <?php echo $_SESSION['user']['password']?>
+            </div>
         </div><!-- END PAGE WRAPPER  -->
 
         <!-- <div class="footer">

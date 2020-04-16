@@ -1,8 +1,26 @@
+/**
+DASHBOARD CONTENT
+**/
+.user-profile{
+    color: white;
+    font-size: 30px;
+}
+.user-profile:hover {
+    color: #049875;
+}
+
 #logout_btn {
     background-color:transparent;
     border: none;
     color: white;
 }
+
+#logout_btn:hover, #logout_btn:focus {
+    background-color:transparent;
+    border: none;
+    color: #049875;
+}
+
 .table-container {
     border: 1px solid rgba(121, 121, 121, 0.2);
     padding: 5px;
@@ -16,3 +34,12 @@
     table-layout: auto;
     width: 100%;
 }
+
+
+/**
+USER PROFILE PAGE
+**/
+#profile-section-icon {
+    font-size: 5rem;
+}
+

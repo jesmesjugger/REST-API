@@ -24,12 +24,14 @@ if (!isLoggedIn()) {
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"><img src="res/img/om_text_logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="dashboard.php"><img src="res/img/om_text_logo.png" alt="logo"></a>
+            <a href="profile.php" class="user-profile ml-auto mr-3"><i class="fa fa-user-circle"></i></a>
             <form action="index.php" method="get">
                 <button id="logout_btn" class=".logout-spn ml-auto mr-3" name="logout_btn">LOGOUT</a>
             </form>
-            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target=".sidebar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav><!-- END NAV TOP  -->

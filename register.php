@@ -30,9 +30,9 @@
 	<div class="input-group">
 		<button type="submit" class="btn" name="register_btn">Register</button>
 	</div>
-	<p>
+	<!-- <p>
 		Already a member? <a href="index.php">Sign in</a>
-	</p>
+	</p> -->
 </form>
 </body>
 </html>
