@@ -174,3 +174,10 @@ function isAdmin()
 		return false;
 	}
 }
+
+/**
+ * 1: capture form input
+ * 2: create a post request ???
+ * 3: get response from post request ??? (****)
+ * 4: from the response, use IFs 
+ */

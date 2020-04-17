@@ -56,7 +56,7 @@ if (!isLoggedIn()) {
             <div class="table-container">
                 <h3><b>Inbound Inquiries</b></h3>
                 <div class="tableDiv">
-                    <table class="table data-table">
+                    <table id="inquiryTable" class="table data-table">
                         <thead>
                             <tr class="thead-dark">
                                 <th scope="col">#</th>

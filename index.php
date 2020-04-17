@@ -1,4 +1,4 @@
-<?php include('include/functions.php') ?>
+<?php include('include/api_auth.php') ?>
 
 <!DOCTYPE html>
 <html>
@@ -18,6 +18,7 @@
 		<div class="card mx-auto my-5">
 			<h2 class="card-header text-center">OM Portal</h2>
 			<div class="card-body">
+			
 				<form action="index.php" method="post">
 					<div class="form-group">
 						<label for="username">Username</label>
