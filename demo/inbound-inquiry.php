@@ -29,8 +29,9 @@ if (!isLoggedIn()) {
             <form action="index.php" method="get">
                 <button id="logout_btn" class=".logout-spn ml-auto mr-3" name="logout_btn">LOGOUT</a>
             </form>
-            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target=".sidebar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav><!-- END NAV TOP  -->
@@ -38,10 +39,10 @@ if (!isLoggedIn()) {
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li class="active-link">
+                    <li>
                         <a href="dashboard.php">Dashboard</a>
                     </li>
-                    <li>
+                    <li class="active-link">
                         <a href="inbound-inquiry.php">Inbound Inquiry</a>
                     </li>
                     <li>
@@ -62,61 +63,6 @@ if (!isLoggedIn()) {
 
         <div id="page-wrapper">
             <div class="table-container">
-                <h3><b>Inbound Transactions</b></h3>
-                <div class="tableDiv">
-                    <table id="inboundTable" class="table data-table">
-                        <thead>
-                            <tr class="thead-dark">
-                                <th scope="col">#</th>
-                                <th scope="col">Transaction Type</th>
-                                <th scope="col">ID Number Type</th>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Mobile Number</th>
-                                <th scope="col">Bank Account Name</th>
-                                <th scope="col">Bank Account No</th>
-                                <th scope="col">Bank Account Type</th>
-                                <th scope="col">Insurance Policy No</th>
-                                <th scope="col">Withdrawal Type</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Fund Type</th>
-                                <th scope="col">Deceased ID No</th>
-                                <th scope="col">Channel</th>
-                                <th scope="col">Accepted T&C</th>
-                                <th scope="col">Created at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $result = getResultObject("transaction");
-                                $info_array = ($result->RequestData);                        
-                                
-                                for($i = 0; $i < count($info_array); $i++){
-                                    echo "<tr>";
-                                    echo "<th>".$info_array[$i]->id."</th>";
-                                    echo "<th>".$info_array[$i]->transaction_type_description."</th>";
-                                    echo "<th>".$info_array[$i]->requester_id_number."</th>";
-                                    echo "<th>".$info_array[$i]->requester_customer_name."</th>";
-                                    echo "<th>".$info_array[$i]->requester_mobile_number."</th>";
-                                    echo "<th>".$info_array[$i]->bank_acount_name."</th>";
-                                    echo "<th>".$info_array[$i]->bank_acount_number."</th>";
-                                    echo "<th>".$info_array[$i]->bank_acount_type."</th>";
-                                    echo "<th>".$info_array[$i]->insurance_policy_number."</th>";
-                                    echo "<th>".$info_array[$i]->withdrawal_type."</th>";
-                                    echo "<th>".$info_array[$i]->withdrawal_amount."</th>";
-                                    echo "<th>".$info_array[$i]->withdrawal_fund_type."</th>";
-                                    echo "<th>".$info_array[$i]->deceased_id_number."</th>";
-                                    echo "<th>".$info_array[$i]->channel."</th>";
-                                    echo "<th>".$info_array[$i]->requester_terms_conditions."</th>";
-                                    echo "<th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</th>";
-                                    echo "</tr>";
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-                </div> <!-- end #tableDiv w/ claims -->
-            </div> <!-- end .Table-Container div -->
-
-            <div class="table-container mt-5">
                 <h3><b>Inbound Inquiries</b></h3>
                 <div class="tableDiv">
                     <table class="table data-table">

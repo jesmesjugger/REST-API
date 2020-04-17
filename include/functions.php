@@ -79,7 +79,7 @@ function register(){
 			
 			$_SESSION['user'] = $user_array;
 			$_SESSION['success']  = "You are now logged in";
-			header('location: ../dashboard.php');				
+			header('location: views/dashboard/');				
 		}
 	}
 }
@@ -147,17 +147,18 @@ function login(){
 
 		if (mysqli_num_rows($results) == 1) { // user found
 			// check if user is admin or user
-			$logged_in_user = mysqli_fetch_assoc($results);
-			if ($logged_in_user['user_type'] == 'admin') {
-				$_SESSION['user'] = $logged_in_user;
+			$db_user_array = mysqli_fetch_assoc($results);
+			
+			if ($db_user_array['role'] == '2') {
+				$_SESSION['user'] = $db_user_array;
 				$_SESSION['success']  = "You are now logged in";
 				header('location: home.php');
 
 			}else{
-				$_SESSION['user'] = $logged_in_user;
+				$_SESSION['user'] = $db_user_array;
 				$_SESSION['success']  = "You are now logged in";
 
-				header('location: dashboard.php');
+				header('location: views/dashboard/');
 			}
 		}else {
 			array_push($errors, "Wrong username/password combination");
@@ -167,7 +168,7 @@ function login(){
 
 function isAdmin()
 {
-	if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin' ) {
+	if (isset($_SESSION['user']) && $_SESSION['user']['role'] == '2' ) {
 		return true;
 	}else{
 		return false;

@@ -42,10 +42,10 @@ if (!isLoggedIn()) {
                         <a href="dashboard.php">Dashboard</a>
                     </li>
                     <li>
-                        <a href="inbound-inquiry.php">Inbound Inquiry</a>
+                        <a href="views/inbound-inquiry/">Inbound Inquiry</a>
                     </li>
                     <li>
-                        <a href="inbound-transaction.php">Inbound Transactions</a>
+                        <a href="views/inbound-transaction/">Inbound Transactions</a>
                     </li>
                 <!-- <li>
                             <a href="#">Blank Page</a>
@@ -63,8 +63,24 @@ if (!isLoggedIn()) {
         <div id="page-wrapper">
             <div id="profile-section" class="text-center">
                 <p><i id="profile-section-icon" class="fa fa-user-circle"></i></p>
-                <?php echo $_SESSION['user']['password']?>
+                <?php echo $_SESSION['user']['username']?>
             </div>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="oldpassword">Current Password</label>
+                    <input type="password" name="oldPassword" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="newpassword">New Password</label>
+                    <input type="password" name="newPassword" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmpassword">Confirm New Password</label>
+                    <input type="password" name="confirmPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success mx-auto" style="display:block;">Update</button>
+            </form>
         </div><!-- END PAGE WRAPPER  -->
 
         <!-- <div class="footer">
