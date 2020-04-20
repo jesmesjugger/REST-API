@@ -21,30 +21,36 @@
         if (empty($password)) {
             array_push($errors, "Password is required");
         }
+        if (strlen($password)<4) {
+            array_push($errors, "Password length should be at least 4 characters");
+        }
 
         // attempt login if no errors on form
         if (count($errors) == 0) {
-            $json_obj = '{
-                "username": "'.$username.'",
-                "password": "'.$password.'" 
-            }';
-            $data = json_decode($json_obj,true);
-
             $url = 'http://18.185.59.70/api/login';
+
+            $data = array(
+                'username' => urlencode($username),
+                'password' => urlencode($password)
+            );
+            $data_string = http_build_query($data);
+            
             $ch = curl_init($url);
+            //set the url, number of POST vars, POST data
+            curl_setopt($ch,CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $response_json = curl_exec($ch);
+            $result_json = curl_exec($ch);
+            $response = json_decode($result_json,true);
             curl_close($ch);
-            $response=json_decode($response_json, true);
             
             if($response == null){
-                array_push($errors, "An error occured, try again later");
+                array_push($errors, "Invalid username/password");
             }
             else {
-
-                if(!$response["status_message"] == "OK"){
+                //If connection is established
+                if($response["status_message"] != "OK"){
                     array_push($errors, $response["status_message"]);
                 }
                 else {
@@ -56,40 +62,19 @@
                     $_SESSION['email'] = $user->email;
                     $_SESSION['role'] = $user->role;
     
-                    if($user->role == "2"){
-                        header("Location: home.php");
-                    }
-                    else {
-                        header("Location: views/dashboard/");
-                    }
+                    // if($user->role == "2"){
+                    //     header("Location: home.php");
+                    // }
+                    // else {
+                    //     header("Location: views/dashboard/");
+                    // }
+                    
                 }
-
             }
-            
-
-            // $url = 'http://18.185.59.70/api/login';
-            // $options = array(
-            //     'http' => array(
-            //         'header'  => "Content-type: application/json",
-            //         'method'  => 'POST',
-            //         'content' => json_encode($data)
-            //     )
-            // );
-
-            // $context  = stream_context_create($options);
-            // $result = file_get_contents($url, false, $context);
-            // if ($result === FALSE){
-            //     array_push($errors,"An error occured. Try again later");
-            // }
-            // else {
-            //     var_dump($result);
-            // }
-
         }
     }
 
-    function isLoggedIn()
-    {
+    function isLoggedIn(){
         if (isset($_SESSION['user'])) {
             return true;
         }else{
@@ -99,7 +84,7 @@
 
     function display_error() {
         global $errors;
-    
+
         if (count($errors) > 0){
             echo '<div class="error">';
                 foreach ($errors as $error){

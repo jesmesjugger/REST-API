@@ -110,7 +110,8 @@ function display_error() {
 			}
 		echo '</div>';
 	}
-}	
+}
+	
 function isLoggedIn()
 {
 	if (isset($_SESSION['user'])) {

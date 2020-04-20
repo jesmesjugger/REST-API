@@ -19,7 +19,7 @@
 			<h2 class="card-header text-center">OM Portal</h2>
 			<div class="card-body">
 			
-				<form action="index.php" method="post">
+				<form action="index.php" method="POST">
 					<div class="form-group">
 						<label for="username">Username</label>
 						<input type="text" name="username" class="form-control" required>

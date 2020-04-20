@@ -2,7 +2,9 @@
 include('../../include/api_auth.php');
 include('../../include/api_call.php');
 
-
+if (!isLoggedIn()) {
+    echo '<h1>'.$_SESSION['user'].'</h1>' ;   
+}
 ?>
 
 <!DOCTYPE html>
