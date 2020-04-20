@@ -1,10 +1,15 @@
 <?php
+    session_start();
     $username = "";
     $email    = "";
     $errors   = array(); 
 
     if (isset($_POST['login_btn'])) {
         login();
+    }
+
+    if (isset($_GET['logout_btn'])) {
+        logout();
     }
 
     function login(){
@@ -54,20 +59,18 @@
                     array_push($errors, $response["status_message"]);
                 }
                 else {
-                    session_start();
-                    $user = $response["Profile"];
-                    $_SESSION['user'] = $user->username;
-                    $_SESSION['name'] = $user->name;
-                    $_SESSION['password'] = $password;
-                    $_SESSION['email'] = $user->email;
-                    $_SESSION['role'] = $user->role;
-    
-                    // if($user->role == "2"){
-                    //     header("Location: home.php");
-                    // }
-                    // else {
-                    //     header("Location: views/dashboard/");
-                    // }
+                    $_SESSION['user'] = $response["Profile"]["username"];
+                    $_SESSION['name'] = $response["Profile"]["name"];
+                    $_SESSION['pass'] = $password;
+                    $_SESSION['email'] = $response["Profile"]["email"];
+                    $_SESSION['role'] = $response["Profile"]["role"];
+
+                    if($response["Profile"]["role"] == "2"){
+                        header("Location: home.php");
+                    }
+                    else {
+                        header("Location: views/dashboard/");
+                    }
                     
                 }
             }
@@ -92,6 +95,17 @@
                 }
             echo '</div>';
         }
+    }
+
+    function logout(){
+        session_destroy();
+        unset($_SESSION['user']);
+        unset($_SESSION['name']);
+        unset($_SESSION['pass']);
+        unset($_SESSION['email']);
+        unset($_SESSION['role']);
+
+        header("location: index.php");
     }
 
 

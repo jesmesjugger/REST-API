@@ -1,5 +1,5 @@
 <?php 
-include('../../include/functions.php');
+include('../../include/api_auth.php');
 include('../../include/api_call.php');
 
 if (!isLoggedIn()) {
@@ -54,7 +54,7 @@ if (!isLoggedIn()) {
         <div id="page-wrapper">
             <div id="profile-section" class="text-center">
                 <p><i id="profile-section-icon" class="fa fa-user-circle"></i></p>
-                <?php echo $_SESSION['user']['username']?>
+                <?php echo $_SESSION['name']?>
             </div>
 
             <form action="#" method="POST">

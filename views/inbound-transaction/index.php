@@ -1,9 +1,9 @@
 <?php 
-include('../../include/functions.php');
+include('../../include/api_auth.php');
 include('../../include/api_call.php');
 
 if (!isLoggedIn()) {
-    header('location: ../index.php');    
+    header('location: ../../index.php');    
 }
 ?>
 
@@ -25,7 +25,7 @@ if (!isLoggedIn()) {
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark">
             <a class="navbar-brand" href="dashboard.php"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
-            <a href="profile.php" class="user-profile ml-auto mr-3"><i class="fa fa-user-circle"></i></a>
+            <a href="../profile/" class="user-profile ml-auto mr-3"><i class="fa fa-user-circle"></i></a>
             <form action="../../index.php" method="get">
                 <button id="logout_btn" class=".logout-spn ml-auto mr-3" name="logout_btn">LOGOUT</a>
             </form>
