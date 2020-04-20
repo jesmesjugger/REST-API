@@ -39,10 +39,10 @@ function register(){
 	$password_2  =  e($_POST['password_2']);
 
 	// form validation: ensure that the form is correctly filled
-	if (empty($username)) { 
+	if (empty($username)) {
 		array_push($errors, "Username is required"); 
 	}
-	if (empty($email)) { 
+	if (empty($email)) {
 		array_push($errors, "Email is required"); 
 	}
 	if (empty($password_1)) { 
@@ -112,16 +112,13 @@ function display_error() {
 	}
 }
 	
-function isLoggedIn()
-{
+function isLoggedIn(){
 	if (isset($_SESSION['user'])) {
 		return true;
 	}else{
 		return false;
 	}
 }
-
-
 
 // LOGIN USER
 function login(){
@@ -167,18 +164,10 @@ function login(){
 	}
 }
 
-function isAdmin()
-{
+function isAdmin(){
 	if (isset($_SESSION['user']) && $_SESSION['user']['role'] == '2' ) {
 		return true;
 	}else{
 		return false;
 	}
 }
-
-/**
- * 1: capture form input
- * 2: create a post request ???
- * 3: get response from post request ??? (****)
- * 4: from the response, use IFs 
- */

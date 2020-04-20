@@ -1,4 +1,5 @@
 <?php include('include/api_auth.php') ?>
+<?php //include('include/functions.php') ?>
 
 <!DOCTYPE html>
 <html>

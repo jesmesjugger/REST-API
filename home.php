@@ -45,20 +45,48 @@ if (isset($_GET['logout'])) {
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="active-link">
-                        <a href="dashboard.php">Dashboard</a>
+                        <a href="#">Create User</a>
                     </li>
                     <li>
-                        <a href="views/inbound-inquiry/">Inbound Inquiry</a>
-                    </li>
-                    <li>
-                        <a href="views/inbound-transaction/">Inbound Transactions</a>
+                        <a href="#">Link 2</a>
                     </li>
                 </ul>
             </div>
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select name="role" class="form-control" id="user_type">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm password</label>
+                    <input type="password" class="form-control" name="confirmPass">
+                </div>
+                <button type="submit" class="btn btn-outline-success" name="register_btn"> + Create user</button>
+                </div>
+            </form>
+            <?php echo display_error(); ?>
         </div><!-- END PAGE WRAPPER  -->
 
         <!-- <div class="footer">
