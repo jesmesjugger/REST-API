@@ -1,16 +1,16 @@
 <?php 
-include('include/functions.php');
+include('include/api_auth.php');
 
-if (!isAdmin()) {
-	$_SESSION['msg'] = "You must log in first";
-	header('location: ../index.php');
-}
+// if (!isAdmin()) {
+// 	$_SESSION['msg'] = "You must log in first";
+// 	header('location: ../index.php');
+// }
 
-if (isset($_GET['logout'])) {
-	session_destroy();
-	unset($_SESSION['user']);
-	header("location: ../index.php");
-}
+// if (isset($_GET['logout'])) {
+// 	session_destroy();
+// 	unset($_SESSION['user']);
+// 	header("location: ../index.php");
+// }
 ?>
 
 <!DOCTYPE html>
@@ -55,38 +55,38 @@ if (isset($_GET['logout'])) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
+            <?php echo display_error(); ?>
+            <?php echo display_success(); ?>
             <form action="" method="POST">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" required>
                 </div>
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" name="username">
+                    <input type="text" class="form-control" name="username" required>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email" required>
                 </div>
                 <div class="form-group">
                     <label>Role</label>
-                    <select name="role" class="form-control" id="user_type">
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
+                    <select name="role" class="form-control" id="user_type" required>
+                        <option value="1">User</option>
+                        <option value="2">Admin</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control" name="password">
+                    <input type="password" class="form-control" name="password" required>
                 </div>
                 <div class="form-group">
                     <label>Confirm password</label>
-                    <input type="password" class="form-control" name="confirmPass">
+                    <input type="password" class="form-control" name="confirmPass" required>
                 </div>
                 <button type="submit" class="btn btn-outline-success" name="register_btn"> + Create user</button>
-                </div>
             </form>
-            <?php echo display_error(); ?>
         </div><!-- END PAGE WRAPPER  -->
 
         <!-- <div class="footer">
@@ -113,6 +113,8 @@ if (isset($_GET['logout'])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
 <script src="res/js/dash.js"></script>
 </html>

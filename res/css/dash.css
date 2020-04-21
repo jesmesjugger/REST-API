@@ -43,3 +43,9 @@ USER PROFILE PAGE
     font-size: 5rem;
 }
 
+
+.error {
+    margin-top: 15px;
+    text-align: center;
+    color: #be2926; 
+}
