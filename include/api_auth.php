@@ -1,9 +1,9 @@
 <?php
 session_start();
+$success_message = null;
 $username = "";
 $password = "";
 $errors   = array();
-$success_message = "";
 $api = 'http://18.209.60.131/api/';
 $headers = [
     'X-Apple-Tz: 0',
@@ -92,7 +92,7 @@ function login(){
 }
 
 function create_user(){
-    global $username,$headers, $password, $api, $errors;
+    global $username, $headers, $password, $api, $errors, $success_message;
     // grab form values
     $name = trim($_POST['name']);
     $username = trim($_POST['username']);
@@ -152,7 +152,7 @@ function create_user(){
         curl_close($ch);
 
         if($response == null){
-            array_push($errors, "User cannot be created, try again later");
+            array_push($errors, "User cannot be created, try again later.");
         }
         else {
             //Connection Successful but request has errors
@@ -188,7 +188,7 @@ function create_user(){
             else{
                 //IF connection successful and no errors
                 if($response["status_message"]=="OK"){
-                    $success_message = "User Created";
+                    $success_message = "User creation success!";
                 }
             }
         }
@@ -207,7 +207,7 @@ function isLoggedIn(){
 function display_error() {
     global $errors;
     if (count($errors) > 0){
-        echo '<div class="error">';
+        echo '<div class="text-center mt-3 text-danger">';
             foreach ($errors as $error){
                 echo $error .'<br>';
             }
@@ -218,10 +218,7 @@ function display_error() {
 function display_success() {
     global $success_message;
     if (!empty($success_message)){
-        echo '<script type="text/javascript">
-        Swal.fire(\'Success\',\'User created\',\'success\')
-        </script>
-        ';
+        echo '<div class="text-center mt-3 text-success">'.$success_message.'</div>';
     }
 }
 
