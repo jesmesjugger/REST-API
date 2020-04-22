@@ -1,10 +1,11 @@
 <?php
+include_once(__DIR__."/../models/API.php");
+
 session_start();
 $success_message = null;
 $username = "";
 $password = "";
 $errors   = array();
-$api = 'http://18.209.60.131/api/';
 $headers = [
     'X-Apple-Tz: 0',
     'X-Apple-Store-Front: 143444,12',
@@ -28,11 +29,13 @@ if (isset($_GET['logout_btn'])) {
 }
 
 function login(){
-        global $username, $password, $headers, $api, $errors;
+        global $username, $password, $headers, $errors, $testapi;
 
         // grab form values
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
+
+        echo $testapi;
 
         // make sure form is filled properly
         if (empty($username)) {
@@ -46,7 +49,7 @@ function login(){
         }
         // attempt login if no errors on form
         if (count($errors) == 0) {
-            $url = $api.'login';
+            $url = API::getLoginApi();
             $data = array(
                 'username' => urlencode($username),
                 'password' => urlencode($password)
@@ -92,7 +95,7 @@ function login(){
 }
 
 function create_user(){
-    global $username, $headers, $password, $api, $errors, $success_message;
+    global $username, $headers, $password, $errors, $success_message;
     // grab form values
     $name = trim($_POST['name']);
     $username = trim($_POST['username']);
@@ -130,7 +133,7 @@ function create_user(){
     
     //Proceed if there are no errors
     if(count($errors)==0){
-        $url = $api.'create';
+        $url = API::getCreateApi();
         $data = array(
             'name' => $name,
             'username' => $username,

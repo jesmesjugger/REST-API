@@ -1,9 +1,8 @@
 <?php
+include_once(__DIR__."/../models/API.php");
 
 function getResultObject($payload){
-   $username = $_SESSION['user'];
-   $password = $_SESSION['pass'];
-   $url = "http://18.185.59.70/api/request?username=\"$username\"&pass=\"$password\"&payload=\"$payload\"";
+   $url = API::getRequestURL($_SESSION['user'], $_SESSION['pass'], $payload);
 
    $client = curl_init($url);
    curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
