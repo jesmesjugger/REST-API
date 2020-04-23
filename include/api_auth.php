@@ -30,7 +30,6 @@ if (isset($_GET['logout_btn'])) {
 
 function login(){
         global $username, $password, $headers, $errors, $testapi;
-
         // grab form values
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
@@ -232,7 +231,7 @@ function logout(){
     unset($_SESSION['pass']);
     unset($_SESSION['email']);
     unset($_SESSION['role']);
-    header("location: index.php");
+    header("location: ./");
 }
 
 
