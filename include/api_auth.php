@@ -77,12 +77,12 @@ function login(){
                 else {
                     $_SESSION['user'] = $response["Profile"]["username"];
                     $_SESSION['name'] = $response["Profile"]["name"];
-                    $_SESSION['pass'] = $password;
                     $_SESSION['email'] = $response["Profile"]["email"];
                     $_SESSION['role'] = $response["Profile"]["role"];
+                    $_SESSION['pass'] = $password;
 
                     if($response["Profile"]["role"] == "2"){
-                        header("Location: home.php");
+                        header("Location: views/admin/home/");
                     }
                     else {
                         header("Location: views/dashboard/");
@@ -198,20 +198,13 @@ function create_user(){
 
 }
 
-function isLoggedIn(){
-    if (isset($_SESSION['user'])) {
-        return true;
-    }else{
-        return false;
-    }
-}
-
 function display_error() {
     global $errors;
     if (count($errors) > 0){
         echo '<div class="text-center mt-3 text-danger">';
             foreach ($errors as $error){
-                echo $error .'<br>';
+                echo '<h6>'.$error.'</h6>';
+                echo '<br>';
             }
         echo '</div>';
     }
@@ -220,11 +213,28 @@ function display_error() {
 function display_success() {
     global $success_message;
     if (!empty($success_message)){
-        echo '<div class="text-center mt-3 text-success">'.$success_message.'</div>';
+        echo '<h4 class="text-center mt-3 text-success">'.$success_message.'</h4>';
     }
 }
 
+function isLoggedIn(){
+    if (isset($_SESSION['user'])) {
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function isAdmin(){
+	if (isset($_SESSION['user']) && $_SESSION['role'] == '2') {
+		return true;
+	}else{
+		return false;
+	}
+}
+
 function logout(){
+    $role = $_SESSION["role"];
     session_destroy();
     unset($_SESSION['user']);
     unset($_SESSION['name']);
@@ -233,6 +243,5 @@ function logout(){
     unset($_SESSION['role']);
     header("location: ./");
 }
-
 
 ?>

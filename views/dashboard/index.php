@@ -3,7 +3,7 @@ include('../../include/api_auth.php');
 include('../../include/api_call.php');
 
 if (!isLoggedIn()) {
-    header('location: ../../index.php');    
+    header('location: ../../');    
 }
 ?>
 
@@ -24,11 +24,9 @@ if (!isLoggedIn()) {
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
-            <a href="../profile/" class="user-profile ml-auto mr-3"><i class="fa fa-user-circle"></i></a>
-            <form action="index.php" method="GET">
-                <button id="logout_btn" class="logout-spn ml-auto mr-3" name="logout_btn">LOGOUT</a>
-            </form>
+            <a class="navbar-brand" href="?"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
+            <a href="../profile/" class="user-profile ml-auto"><i class="fa fa-user-circle"></i></a>
+            <a href="index.php?logout_btn=true" id="logout_btn" class="logout-spn ml-3 mr-3">LOGOUT</a>
             <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,7 +37,7 @@ if (!isLoggedIn()) {
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="active-link">
-                        <a href="#">Dashboard</a>
+                        <a href="?">Dashboard</a>
                     </li>
                     <li>
                         <a href="../inbound-inquiry/">Inbound Inquiry</a>

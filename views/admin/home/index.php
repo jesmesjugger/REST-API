@@ -1,15 +1,14 @@
 <?php 
-include('include/api_auth.php');
-// if (!isAdmin()) {
-// 	$_SESSION['msg'] = "You must log in first";
-// 	header('location: ../index.php');
-// }
+define("ROOT","../../../");
+include(ROOT.'/include/api_auth.php');
 
-// if (isset($_GET['logout'])) {
-// 	session_destroy();
-// 	unset($_SESSION['user']);
-// 	header("location: ../index.php");
-// }
+if (!isAdmin()) {
+	logout();
+}
+
+if (!isLoggedIn()) {
+    header('location: ../../../');    
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,19 +20,17 @@ include('include/api_auth.php');
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="res/css/template.css">
-    <link rel="stylesheet" href="res/css/dash.css">
+    <link rel="stylesheet" href="../../../res/css/template.css">
+    <link rel="stylesheet" href="../../../res/css/dash.css">
     
     <title>Rapid Portal</title>
 </head>
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="dashboard.php"><img src="res/img/om_text_logo.png" alt="logo"></a>
-            <a href="profile.php" class="user-profile ml-auto mr-3"><i class="fa fa-user-circle"></i></a>
-            <form action="index.php" method="get">
-                <button id="logout_btn" class=".logout-spn ml-auto mr-3" name="logout_btn">LOGOUT</a>
-            </form>
+            <a class="navbar-brand" href="?"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
+            <a href="../../profile/" class="user-profile ml-auto"><i class="fa fa-user-circle"></i></a>
+            <a href="index.php?logout_btn=true" id="logout_btn" class="logout-spn ml-3 mr-3">LOGOUT</a>
             <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,10 +41,13 @@ include('include/api_auth.php');
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="active-link">
-                        <a href="#">Create User</a>
+                        <a href="?">Home</a>
                     </li>
                     <li>
-                        <a href="#">Link 2</a>
+                        <a href="../../inbound-inquiry/">Inbound Inquiry</a>
+                    </li>
+                    <li>
+                        <a href="../../inbound-transaction/">Inbound Transactions</a>
                     </li>
                 </ul>
             </div>
@@ -56,6 +56,8 @@ include('include/api_auth.php');
         <div id="page-wrapper">
             <?php echo display_error(); ?>
             <?php echo display_success(); ?>
+            <h3>Create User</h3>
+            <hr>
             <form action="" method="POST">
                 <div class="form-group">
                     <label>Name</label>
@@ -112,5 +114,5 @@ include('include/api_auth.php');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
-<script src="res/js/dash.js"></script>
+<script src="../../../res/js/dash.js"></script>
 </html>
