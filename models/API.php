@@ -1,6 +1,6 @@
 <?php
 class API{
-    private static $api = "http://18.209.60.131/api/";
+    private static $api = "http://35.174.107.26/api/";
 
     public static function getCreateApi(){
         return API::$api.'create';

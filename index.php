@@ -1,5 +1,5 @@
 <?php include('include/api_auth.php') ?>
-<?php //include('include/functions.php') ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="res/vendors/bootstrap-4.0.0/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="res/css/login.css">
 	<title>OM Portal</title>
 </head>
@@ -38,9 +38,6 @@
 	</div>
 </body>
 
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="res/vendors/jquery/jquery-3.5.0.js"></script>
+<script src="res/vendors/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 </html>
