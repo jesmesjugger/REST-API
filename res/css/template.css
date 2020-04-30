@@ -24,6 +24,10 @@ body {
 /*==============================================
         MENU STYLES    
         =============================================*/
+#top-navbar {
+    background-color: #1a1a1a !important;
+}
+
 .sidebar-collapse .nav {
     padding: 0;
     padding-top: 50px;

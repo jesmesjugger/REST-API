@@ -102,7 +102,7 @@ if (!isLoggedIn()) {
     </div><!-- /. WRAPPER  -->
 </body>
 
-<script src="../../../res/vendors/jquery/jquery-3.5.0.js"></script>
+<script src="../../../res/vendors/jquery/jquery-3.4.1.js"></script>
 <script src="../../../res/vendors/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="../../../res/js/dash.js"></script>
 </html>

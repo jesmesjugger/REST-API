@@ -48,7 +48,6 @@ $(document).ready(function(){
         ]
     });
 
-
     /**
      * D3 Data visualization
      */

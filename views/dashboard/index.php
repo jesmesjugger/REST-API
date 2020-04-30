@@ -51,9 +51,11 @@ if (!isLoggedIn()) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <h3>Graph 1</h3>
-                <div id="graph-1">
-                </div>
+            <div id="transaction-graph" class="col-md-6 svg_div">
+                <!-- <h3 class="text-center">Transcation Types</h3> -->
+                <svg height="300" width="440"></svg>
+            </div>
+            
         </div><!-- END PAGE WRAPPER  -->
 
     </div><!-- /. WRAPPER  -->
@@ -61,7 +63,7 @@ if (!isLoggedIn()) {
 
 
 
-<script src="../../res/vendors/jquery/jquery-3.5.0.js"></script>
+<script src="../../res/vendors/jquery/jquery-3.4.1.js"></script>
 <script src="../../res/vendors/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="../../res/vendors/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="../../res/vendors/DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
@@ -73,6 +75,7 @@ if (!isLoggedIn()) {
 <script src="../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.print.min.js"></script>
 <script src="../../res/vendors/d3/d3.min.js"></script>
 <script src="../../res/js/dash.js"></script>
+<script src="../../res/js/graphs.js"></script>
 
 </body>
 </html>
