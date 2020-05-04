@@ -51,10 +51,17 @@ if (!isLoggedIn()) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <div id="transaction-graph" class="col-md-6 svg_div">
-                <!-- <h3 class="text-center">Transcation Types</h3> -->
-                <svg height="300" width="440"></svg>
+            <div class="row">
+                <div id="transaction-graph" class="col-md-6 svg_div card">
+                    <!-- <h3 class="text-center">Transcation Types</h3> -->
+                    <svg height="300" width="440"></svg>
+                </div>
+                <div id="inquiry-graph" class="col-md-6 svg_div card">
+                    <!-- <h3 class="text-center">Transcation Types</h3> -->
+                    <svg height="300" width="440"></svg>
+                </div>
             </div>
+            
             
         </div><!-- END PAGE WRAPPER  -->
 
