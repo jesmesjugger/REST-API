@@ -52,16 +52,18 @@ if (!isLoggedIn()) {
 
         <div id="page-wrapper">
             <div class="row">
-                <div id="transaction-graph" class="col-md-6 svg_div card">
-                    <!-- <h3 class="text-center">Transcation Types</h3> -->
+                <div id="transaction-graph" class="col-md-12 svg_div card">
                     <svg height="300" width="440"></svg>
                 </div>
-                <div id="inquiry-graph" class="col-md-6 svg_div card">
-                    <!-- <h3 class="text-center">Transcation Types</h3> -->
+                <div id="inquiry-graph" class="col-md-12 svg_div card">
                     <svg height="300" width="440"></svg>
                 </div>
             </div>
             
+            <!-- <div id="line-graph" class="col-md-12 card mt-2" style="overflow:auto;">
+                <svg height="300" width="800"></svg>
+            </div> -->
+
             
         </div><!-- END PAGE WRAPPER  -->
 
