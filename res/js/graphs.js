@@ -20,7 +20,6 @@ $(document).ready(function(){
         success: function(data){
             loadTransactionGraph(data.trans_link);
             loadInquiryGraph(data.inquiry_link)
-            loadLineGraph(data.trans_link);
         },
         error: function(resp) {
             console.log(resp);
@@ -186,68 +185,6 @@ function loadInquiryGraph(link){
             .text(`Couldn't open the data file: "${err}".`);
     });
 }
-
-// function loadLineGraph(link){
-//     var svg = d3.select("#line-graph").select("svg"),
-//         margin  = {top: 20, right: 30, bottom: 30, left: 40},
-//         width   = svg.attr("width")  - margin.left - margin.right,
-//         height  = svg.attr("height") - (margin.top + margin.bottom);
-        
-
-//     d3.json(link).then(data => {
-//         reqData = data.RequestData;
-//         var data_arr= [];
-
-//         for(var i=0; i<reqData.length; i++){
-//             if(reqData[i].withdrawal_type == "Partial"){
-//                 var date = reqData[i].created_at.split("T")[0]
-//                 partialObj = 
-//                 {
-//                     "withrawal_date": date,
-//                     "withdrawal_amount": reqData[i].withdrawal_amount
-//                 }
-//                 data_arr.push(partialObj);
-//             }
-//         }
-        
-//         var xScale  = d3.scaleUtc()
-//         .domain(d3.extent(data, d => d.withrawal_date))
-//         .range([margin.left, width - margin.right]);
-
-//         var yScale  = d3.scaleLinear()
-//         .domain([0, d3.max(data, d => d.withdrawal_amount)]).nice()
-//         .range([height - margin.bottom, margin.top]);
-
-//         var g = svg.append("g")
-//                     .attr("transform", `translate(${margin.left},${margin.top})`);
-
-//         g.append("g")
-//             .attr("class", "axis axis-x")
-//             .attr("transform", `translate(0,${height})`)
-//             .call(d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0));
-        
-//         g.append("g")
-//         attr("transform", `translate(${margin.left},0)`)
-//         .call(d3.axisLeft(yScale));
-        
-        
-        
-//         // svg.append("text")
-//         //     .attr("transform", "translate(100,0)")
-//         //     .attr("x", 40)
-//         //     .attr("y", 30)
-//         //     .attr("font-size", "24px")
-//         //     .text("Transaction Types");
-//     })
-//     .catch(err => {
-//     svg.append("text")         
-//             .attr("y", 20)
-//             .attr("text-anchor", "left")  
-//             .style("font-size", "20px") 
-//             .style("font-weight", "bold")  
-//             .text(`Couldn't open the data file: "${err}".`);
-//     });
-// }
 
 function mouseOver(d,i){
     d3.select(this).attr('fill','#02664f');

@@ -60,13 +60,7 @@ if (!isLoggedIn()) {
                 </div>
             </div>
             
-            <!-- <div id="line-graph" class="col-md-12 card mt-2" style="overflow:auto;">
-                <svg height="300" width="800"></svg>
-            </div> -->
-
-            
         </div><!-- END PAGE WRAPPER  -->
-
     </div><!-- /. WRAPPER  -->
 
 
