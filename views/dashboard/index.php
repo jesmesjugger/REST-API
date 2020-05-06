@@ -1,6 +1,5 @@
 <?php 
 include('../../include/api_auth.php');
-include('../../include/api_call.php');
 
 if (!isLoggedIn()) {
     header('location: ../../');    
@@ -64,8 +63,7 @@ if (!isLoggedIn()) {
     </div><!-- /. WRAPPER  -->
 
 
-
-
+    
 <script src="../../res/vendors/jquery/jquery-3.4.1.js"></script>
 <script src="../../res/vendors/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="../../res/vendors/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>

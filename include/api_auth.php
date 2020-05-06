@@ -6,17 +6,6 @@ $success_message = null;
 $username = "";
 $password = "";
 $errors   = array();
-$headers = [
-    'X-Apple-Tz: 0',
-    'X-Apple-Store-Front: 143444,12',
-    'Accept: application/json',
-    'Accept-Encoding: gzip, deflate',
-    'Accept-Language: en-US,en;q=0.5',
-    'Cache-Control: no-cache',
-    'Content-Type: application/x-www-form-urlencoded; charset=utf-8',
-    'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0',
-    'X-MicrosoftAjax: Delta=true'
-];
 
 if (isset($_POST['login_btn'])) {
     login();
@@ -29,12 +18,10 @@ if (isset($_GET['logout_btn'])) {
 }
 
 function login(){
-        global $username, $password, $headers, $errors, $testapi;
+        global $username, $password, $errors;
         // grab form values
         $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
-
-        echo $testapi;
+        $password = $_POST['password'];
 
         // make sure form is filled properly
         if (empty($username)) {
@@ -57,11 +44,10 @@ function login(){
             
             $ch = curl_init($url);
             //set the url, number of POST vars, POST data
-            curl_setopt($ch,CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, API::getHeaders());
             $result_json = curl_exec($ch);
             $response = json_decode($result_json,true);
             curl_close($ch);
@@ -75,6 +61,7 @@ function login(){
                     array_push($errors, $response["status_message"]);
                 }
                 else {
+                    $_SESSION['id'] = $response["Profile"]["id"];
                     $_SESSION['user'] = $response["Profile"]["username"];
                     $_SESSION['name'] = $response["Profile"]["name"];
                     $_SESSION['email'] = $response["Profile"]["email"];
@@ -94,7 +81,7 @@ function login(){
 }
 
 function create_user(){
-    global $username, $headers, $password, $errors, $success_message;
+    global $username, $password, $errors, $success_message;
     // grab form values
     $name = trim($_POST['name']);
     $username = trim($_POST['username']);
@@ -148,7 +135,7 @@ function create_user(){
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, API::getHeaders());
         $result_json = curl_exec($ch);
         $response = json_decode($result_json,true);
         curl_close($ch);

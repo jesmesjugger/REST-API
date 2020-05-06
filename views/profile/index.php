@@ -1,6 +1,6 @@
 <?php 
 include('../../include/api_auth.php');
-include('../../include/api_call.php');
+include('../../include/profile_functions.php');
 
 if (!isLoggedIn()) {
     header('location: ../../');    
@@ -64,10 +64,10 @@ if (!isLoggedIn()) {
                 <h5><b><?php echo $_SESSION['name']?></b></h5>
             </div>
 
-            <form action="#" method="POST">
+            <form action="index.php" method="POST">
                 <div class="form-group">
-                    <label for="oldpassword">Current Password</label>
-                    <input type="password" name="oldPassword" class="form-control" required>
+                    <label for="currentpassword">Current Password</label>
+                    <input type="password" name="currentPassword" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="newpassword">New Password</label>
@@ -77,8 +77,9 @@ if (!isLoggedIn()) {
                     <label for="confirmpassword">Confirm New Password</label>
                     <input type="password" name="confirmPassword" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-success mx-auto" style="display:block;">Update</button>
+                <button type="submit" class="btn btn-success mx-auto" name="updatePasswordBtn" style="display:block;">Update</button>
             </form>
+            <?php empty($success_message)? show_profile_errors() : show_profile_success(); ?>
         </div><!-- END PAGE WRAPPER  -->
 
         <!-- <div class="footer">
