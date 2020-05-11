@@ -14,22 +14,22 @@ class API{
     ];
 
     public static function getCreateApi(){
-        return API::$api.'create';
+        return self::$api.'create';
     }
 
     public static function getLoginApi(){
-        return API::$api.'login';
+        return self::$api.'login';
     }
 
     public static function getRequestURL($username,$password,$payload){
-        return API::$api."request?username=\"$username\"&pass=\"$password\"&payload=\"$payload\"";
+        return self::$api."request?username=\"$username\"&pass=\"$password\"&payload=\"$payload\"";
     }
 
     public static function getUpdatePasswordApi($role,$username,$password){
-        return API::$api."update/".$role."?username=\"$username\"&pass=\"$password\"";
+        return self::$api."update/".$role."?username=\"$username\"&pass=\"$password\"";
     }
 
     public static function getHeaders(){
-        return API::$headers;
+        return self::$headers;
     }
 }

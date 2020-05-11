@@ -22,7 +22,7 @@ if (!isLoggedIn()) {
 </head>
 <body>
     <div id="wrapper">
-        <nav id="top-navbar" class="navbar navbar-dark bg-dark">
+        <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
         <?php if($_SESSION["role"]=="1"): ?>
                 <a class="navbar-brand" href="../dashboard/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
             <?php elseif($_SESSION["role"]=="2"): ?>
@@ -36,7 +36,7 @@ if (!isLoggedIn()) {
             </button>
         </nav><!-- END NAV TOP  -->
 
-        <nav class="navbar-default navbar-side" role="navigation">
+        <nav class="navbar-default navbar-side" role="navigation" aria-label="sidebar">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                 <?php if($_SESSION["role"]=="1"): ?>
@@ -61,7 +61,7 @@ if (!isLoggedIn()) {
         <div id="page-wrapper">
             <div id="profile-section" class="text-center">
                 <p><i id="profile-section-icon" class="fa fa-user-circle"></i></p>
-                <h5><b><?php echo $_SESSION['name']?></b></h5>
+                <h5><strong><?php echo $_SESSION['name']?></strong></h5>
             </div>
 
             <form action="index.php" method="POST">
@@ -81,15 +81,7 @@ if (!isLoggedIn()) {
             </form>
             <?php empty($success_message)? show_profile_errors() : show_profile_success(); ?>
         </div><!-- END PAGE WRAPPER  -->
-
-        <!-- <div class="footer">
-            <div class="row">
-                    <div class="col-lg-12">
-                        &copy; 2014 yourdomain.com | Design by: <a href="http://binarytheme.com" style="color:#fff;"
-                            target="_blank">www.binarytheme.com</a>
-                    </div>
-                </div>
-        </div> -->
+        
     </div><!-- /. WRAPPER  -->
 </body>
 

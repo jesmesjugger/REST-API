@@ -11,7 +11,7 @@ $(document).ready(function(){
     // });
 
     $.ajax({
-        url: "../../include/get_data.php",
+        url: "../../include/ajax_data.php",
         credentials: "same-origin",
         headers: {
             "Content-Type": "application/json",

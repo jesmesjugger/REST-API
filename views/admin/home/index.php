@@ -28,9 +28,9 @@ if (!isLoggedIn()) {
 </head>
 <body>
     <div id="wrapper">
-        <nav id="top-navbar" class="navbar navbar-dark bg-dark">
+        <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
             <a class="navbar-brand" href="?"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
-            <a href="../../profile/" class="user-profile ml-auto"><i class="fa fa-user-circle"></i></a>
+            <a href="../../profile/" class="user-profile ml-auto"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
             <a href="index.php?logout_btn=true" id="logout_btn" class="logout-spn ml-3 mr-3">LOGOUT</a>
             <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@ if (!isLoggedIn()) {
             </button>
         </nav><!-- END NAV TOP  -->
 
-        <nav class="navbar-default navbar-side" role="navigation">
+        <nav class="navbar-default navbar-side" role="navigation" aria-label="sidebar">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="active-link">
@@ -91,14 +91,6 @@ if (!isLoggedIn()) {
             </form>
         </div><!-- END PAGE WRAPPER  -->
 
-        <!-- <div class="footer">
-            <div class="row">
-                    <div class="col-lg-12">
-                        &copy; 2014 yourdomain.com | Design by: <a href="http://binarytheme.com" style="color:#fff;"
-                            target="_blank">www.binarytheme.com</a>
-                    </div>
-                </div>
-        </div> -->
     </div><!-- /. WRAPPER  -->
 </body>
 

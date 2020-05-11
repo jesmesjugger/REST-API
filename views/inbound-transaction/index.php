@@ -24,13 +24,13 @@ if (!isLoggedIn()) {
 </head>
 <body>
     <div id="wrapper">
-        <nav id="top-navbar" class="navbar navbar-dark bg-dark">
+        <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
         <?php if($_SESSION["role"]=="1"): ?>
                 <a class="navbar-brand" href="../dashboard/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
             <?php elseif($_SESSION["role"]=="2"): ?>
                 <a class="navbar-brand" href="../admin/home/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
             <?php endif; ?> 
-            <a href="../profile/" class="user-profile ml-auto"><i class="fas fa-user-circle"></i></a>
+            <a href="../profile/" class="user-profile ml-auto"><i class="fas fa-user-circle" aria-hidden="true"></i></a>
             <a href="index.php?logout_btn=true" id="logout_btn" class="logout-spn ml-3 mr-3">LOGOUT</a>
             <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target=".sidebar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -39,7 +39,7 @@ if (!isLoggedIn()) {
             </button>
         </nav><!-- END NAV TOP  -->
 
-        <nav class="navbar-default navbar-side" role="navigation">
+        <nav class="navbar-default navbar-side" role="navigation" aria-label="sidebar">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                 <?php if($_SESSION["role"]=="1"): ?>
@@ -63,7 +63,7 @@ if (!isLoggedIn()) {
 
         <div id="page-wrapper">
             <div class="table-container">
-                <h3><b>Inbound Transactions</b></h3>
+                <h3><strong>Inbound Transactions</strong></h3>
                 <div class="tableDiv">
                     <table id="transactionTable" class="table data-table">
                         <thead>
@@ -89,26 +89,27 @@ if (!isLoggedIn()) {
                         <tbody>
                             <?php
                                 $result = getResultObject("transaction");
-                                $info_array = ($result->RequestData);                        
+                                $info_array = ($result->RequestData); 
+                                $th = "th";                       
                                 
                                 for($i = 0; $i < count($info_array); $i++){
                                     echo "<tr>";
-                                    echo "<th>".$info_array[$i]->id."</th>";
-                                    echo "<th>".$info_array[$i]->transaction_type_description."</th>";
-                                    echo "<th>".$info_array[$i]->requester_id_number."</th>";
-                                    echo "<th>".$info_array[$i]->requester_customer_name."</th>";
-                                    echo "<th>".$info_array[$i]->requester_mobile_number."</th>";
-                                    echo "<th>".$info_array[$i]->bank_acount_name."</th>";
-                                    echo "<th>".$info_array[$i]->bank_acount_number."</th>";
-                                    echo "<th>".$info_array[$i]->bank_acount_type."</th>";
-                                    echo "<th>".$info_array[$i]->insurance_policy_number."</th>";
-                                    echo "<th>".$info_array[$i]->withdrawal_type."</th>";
-                                    echo "<th>".$info_array[$i]->withdrawal_amount."</th>";
-                                    echo "<th>".$info_array[$i]->withdrawal_fund_type."</th>";
-                                    echo "<th>".$info_array[$i]->deceased_id_number."</th>";
-                                    echo "<th>".$info_array[$i]->channel."</th>";
-                                    echo "<th>".$info_array[$i]->requester_terms_conditions."</th>";
-                                    echo "<th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</th>";
+                                    echo "<$th>".$info_array[$i]->id."</$th>";
+                                    echo "<$th>".$info_array[$i]->transaction_type_description."</$th>";
+                                    echo "<$th>".$info_array[$i]->requester_id_number."</$th>";
+                                    echo "<$th>".$info_array[$i]->requester_customer_name."</$th>";
+                                    echo "<$th>".$info_array[$i]->requester_mobile_number."</$th>";
+                                    echo "<$th>".$info_array[$i]->bank_acount_name."</$th>";
+                                    echo "<$th>".$info_array[$i]->bank_acount_number."</$th>";
+                                    echo "<$th>".$info_array[$i]->bank_acount_type."</$th>";
+                                    echo "<$th>".$info_array[$i]->insurance_policy_number."</$th>";
+                                    echo "<$th>".$info_array[$i]->withdrawal_type."</$th>";
+                                    echo "<$th>".$info_array[$i]->withdrawal_amount."</$th>";
+                                    echo "<$th>".$info_array[$i]->withdrawal_fund_type."</$th>";
+                                    echo "<$th>".$info_array[$i]->deceased_id_number."</$th>";
+                                    echo "<$th>".$info_array[$i]->channel."</$th>";
+                                    echo "<$th>".$info_array[$i]->requester_terms_conditions."</$th>";
+                                    echo "<$th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</th>";
                                     echo "</tr>";
                                 }
                             ?>
@@ -118,14 +119,6 @@ if (!isLoggedIn()) {
             </div> <!-- end .Table-Container div -->
         </div><!-- END PAGE WRAPPER  -->
 
-        <!-- <div class="footer">
-            <div class="row">
-                    <div class="col-lg-12">
-                        &copy; 2014 yourdomain.com | Design by: <a href="http://binarytheme.com" style="color:#fff;"
-                            target="_blank">www.binarytheme.com</a>
-                    </div>
-                </div>
-        </div> -->
     </div><!-- /. WRAPPER  -->
 </body>
 

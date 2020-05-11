@@ -24,13 +24,13 @@ if (!isLoggedIn()) {
 </head>
 <body>
     <div id="wrapper">
-        <nav id="top-navbar" class="navbar navbar-dark bg-dark">
+        <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
             <?php if($_SESSION["role"]=="1"): ?>
                 <a class="navbar-brand" href="../dashboard/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
             <?php elseif($_SESSION["role"]=="2"): ?>
                 <a class="navbar-brand" href="../admin/home/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
             <?php endif; ?> 
-            <a href="../profile/" class="user-profile ml-auto"><i class="fa fa-user-circle"></i></a>
+            <a href="../profile/" class="user-profile ml-auto"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
             <a href="index.php?logout_btn=true" id="logout_btn" class="logout-spn ml-3 mr-3">LOGOUT</a>
             <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target=".sidebar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -39,7 +39,7 @@ if (!isLoggedIn()) {
             </button>
         </nav><!-- END NAV TOP  -->
 
-        <nav class="navbar-default navbar-side" role="navigation">
+        <nav class="navbar-default navbar-side" role="navigation" aria-label="sidebar">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                 <?php if($_SESSION["role"]=="1"): ?>
@@ -63,7 +63,7 @@ if (!isLoggedIn()) {
 
         <div id="page-wrapper">
             <div class="table-container">
-                <h3><b>Inbound Inquiries</b></h3>
+                <h3><strong>Inbound Inquiries</strong></h3>
                 <div class="tableDiv">
                     <table id="inquiryTable" class="table data-table">
                         <thead>
@@ -81,17 +81,19 @@ if (!isLoggedIn()) {
                         <tbody>
                             <?php
                                 $result = getResultObject("inquiry");
-                                $info_array = ($result->RequestData);                      
+                                $info_array = ($result->RequestData);
+                                $th = "th";
+
                                 for($i = 0; $i < count($info_array); $i++){
                                     echo "<tr>";
-                                    echo "<th>".$info_array[$i]->id."</th>";
-                                    echo "<th>".$info_array[$i]->name."</th>";
-                                    echo "<th>".$info_array[$i]->telephone_number."</th>";
-                                    echo "<th>".$info_array[$i]->inquiry_type."</th>";
-                                    echo "<th>".$info_array[$i]->product_name."</th>";
-                                    echo "<th>".$info_array[$i]->form_id."</th>";
-                                    echo "<th>".$info_array[$i]->status_id."</th>";
-                                    echo "<th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</th>";
+                                    echo "<$th>".$info_array[$i]->id."</$th>";
+                                    echo "<$th>".$info_array[$i]->name."</$th>";
+                                    echo "<$th>".$info_array[$i]->telephone_number."</$th>";
+                                    echo "<$th>".$info_array[$i]->inquiry_type."</$th>";
+                                    echo "<$th>".$info_array[$i]->product_name."</$th>";
+                                    echo "<$th>".$info_array[$i]->form_id."</$th>";
+                                    echo "<$th>".$info_array[$i]->status_id."</$th>";
+                                    echo "<$th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</$th>";
                                     echo "</tr>";
                                 }
                             ?>
@@ -101,14 +103,6 @@ if (!isLoggedIn()) {
             </div> <!-- end .Table-Container div -->
         </div><!-- END PAGE WRAPPER  -->
 
-        <!-- <div class="footer">
-            <div class="row">
-                    <div class="col-lg-12">
-                        &copy; 2014 yourdomain.com | Design by: <a href="http://binarytheme.com" style="color:#fff;"
-                            target="_blank">www.binarytheme.com</a>
-                    </div>
-                </div>
-        </div> -->
     </div><!-- /. WRAPPER  -->
 </body>
 

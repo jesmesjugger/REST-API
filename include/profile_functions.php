@@ -5,33 +5,35 @@ $profile_errors = array();
 $success_message = "";
 
 if(isset($_POST['updatePasswordBtn'])){
-    updateOwnPassword();
-}
-
-
-function updateOwnPassword(){
-    global $profile_errors, $success_message;
-    
     $currentPass = $_POST['currentPassword'];
     $newPass = $_POST['newPassword'];
     $confirmNewPass = $_POST['confirmPassword'];
+
+    updatePassword($currentPass, $newPass, $confirmNewPass);
+}
+
+
+function updatePassword($currentPass, $newPass, $confirmNewPass){
+    global $profile_errors, $success_message;
+    $status_message = "status_message";
     
     //validation
     if(empty($currentPass)) {
         array_push($profile_errors, "Current password is required");
     }
-    if(empty($newPass)) {
+    else if(empty($newPass)) {
         array_push($profile_errors, "New password is required");
     }
-    if(empty($confirmNewPass)) {
+    else if(empty($confirmNewPass)) {
         array_push($profile_errors, "Password not confirmed");
     }
-    if(strlen($newPass)<6){
+    else if(strlen($newPass)<6){
         array_push($profile_errors, "Password length should be at least 6 characters");
     }
-    if($newPass != $confirmNewPass) {
+    else if($newPass != $confirmNewPass) {
         array_push($profile_errors, "Passwords do not match");
     }
+
     if (count($profile_errors) == 0) {
         $data = array(
             'password'=>$newPass,
@@ -53,16 +55,18 @@ function updateOwnPassword(){
         }
         else if(isset($response["message"])){
             $custom_errors = $response["errors"];
+            
             if(isset($custom_errors["password"])){
                 for($i = 0; $i < count($custom_errors["password"]); $i++){
                     array_push($profile_errors,$custom_errors["password"][$i]);
                 }
             }
+
         }
-        else if($response["status_message"] !="OK"){
-            array_push($profile_errors, $response["status_message"]);
+        else if($response["$status_message"] !="OK"){
+            array_push($profile_errors, $response["$status_message"]);
         }
-        else if($response["status_message"] == "OK"){
+        else if($response["$status_message"] == "OK"){
             $success_message = "Password updated successfully!";
             $_SESSION['pass'] = $newPass;
         }
