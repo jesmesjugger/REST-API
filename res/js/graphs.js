@@ -11,7 +11,7 @@ $(document).ready(function(){
     // });
 
     $.ajax({
-        url: "../../include/ajax_data.php",
+        url: "../../include/d3_data.php",
         credentials: "same-origin",
         headers: {
             "Content-Type": "application/json",
@@ -42,7 +42,7 @@ function loadTransactionGraph(link){
                     .attr("transform", `translate(${margin.left},${margin.top})`);
 
     d3.json(link).then(data => {
-        reqData = data.RequestData;
+        let reqData = data.RequestData;
         var fwcount=0,
             pwcount=0,
             fnclaim=0;
@@ -59,16 +59,15 @@ function loadTransactionGraph(link){
             }
         }
     
-        var data= [
+        var f_data= [
             {"transaction_type" :"Full Withdrawal", "quantity" :fwcount},
             {"transaction_type" :"Partial Withdrawal","quantity" :pwcount},
             {"transaction_type" :"Funeral Claim","quantity" :fnclaim}
-        ]
+        ],
+        schemeSet1 = d3.scaleOrdinal().range(d3.schemeSet1);
     
-        xScale.domain(data.map(d => d.transaction_type));
-        yScale.domain([0, d3.max(data, d => d.quantity)]);
-    
-        var format_yAxis = d3.format('.0f');
+        xScale.domain(f_data.map(d => d.transaction_type));
+        yScale.domain([0, d3.max(f_data, d => d.quantity)]);
 
         g.append("g")
             .attr("class", "axis axis-x")
@@ -78,22 +77,19 @@ function loadTransactionGraph(link){
         g.append("g")
             .attr("class", "axis axis-y")
             .call(
-                d3.axisLeft(yScale)
-                // .tickFormat(format_yAxis)
-                // .ticks(Math.ceil(data.length/2))
-                );
+                d3.axisLeft(yScale));
         
         g.selectAll(".bar")
-            .data(data)
+            .data(f_data)
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", d => xScale(d.transaction_type))
             .attr("y", d => yScale(d.quantity))
             .attr("width", xScale.bandwidth())
             .attr("height", d => height - yScale(d.quantity))
-            .attr("fill","#212121")
+            .attr("fill",(d,i)=>schemeSet1(i))
             .on("mouseover",mouseOver)
-            .on("mouseout",mouseOut);
+            .on("mouseout",function(d,i){d3.select(this).attr('fill',schemeSet1(i))});
         
         svg.append("text")
             .attr("transform", "translate(100,0)")
@@ -123,7 +119,7 @@ function loadInquiryGraph(link){
                     .attr("transform", `translate(${margin.left},${margin.top})`);
 
     d3.json(link).then(data => {
-        reqData = data.RequestData;
+        let reqData = data.RequestData;
         var fiCount=0,
             piCount=0;
 
@@ -135,16 +131,15 @@ function loadInquiryGraph(link){
                 piCount +=1;
             }
         }
-    
-        var data= [
+        
+        var f_data = [
             {"inquiry_type" :"Funeral", "quantity" :fiCount},
             {"inquiry_type" :"Personal","quantity" :piCount},
-        ]
-    
-        xScale.domain(data.map(d => d.inquiry_type));
-        yScale.domain([0, d3.max(data, d => d.quantity)]);
-    
-        var format_yAxis = d3.format('.0f');
+        ],
+        schemeCategory10 = d3.scaleOrdinal().range(d3.schemeCategory10);
+
+        xScale.domain(f_data.map(d => d.inquiry_type));
+        yScale.domain([0, d3.max(f_data, d => d.quantity)]);
 
         g.append("g")
             .attr("transform", `translate(0,${height})`)
@@ -152,22 +147,19 @@ function loadInquiryGraph(link){
         
         g.append("g")
             .call(
-                d3.axisLeft(yScale)
-                // .tickFormat(format_yAxis)
-                // .ticks(Math.ceil(data.length/2))
-                );
+                d3.axisLeft(yScale));
         
         g.selectAll(".bar")
-            .data(data)
+            .data(f_data)
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", d => xScale(d.inquiry_type))
             .attr("y", d => yScale(d.quantity))
             .attr("width", xScale.bandwidth())
             .attr("height", d => height - yScale(d.quantity))
-            .attr("fill","#212121")
+            .attr("fill",(d,i)=>schemeCategory10(i))
             .on("mouseover",mouseOver)
-            .on("mouseout",mouseOut);
+            .on("mouseout",function(d,i){d3.select(this).attr('fill',schemeCategory10(i))});
         
         svg.append("text")
             .attr("transform", "translate(100,0)")
@@ -187,8 +179,5 @@ function loadInquiryGraph(link){
 }
 
 function mouseOver(d,i){
-    d3.select(this).attr('fill','#02664f');
-}
-function mouseOut(d,i){
-    d3.select(this).attr('fill','#212121');
+    d3.select(this).attr('fill',"#004445");
 }
