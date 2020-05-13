@@ -181,10 +181,8 @@ function create_user(){
                     include_once("secure_email_code.php");
                 }
             }
-        }
-       
+        }  
     }
-
 }
 
 function display_error() {
