@@ -50,6 +50,9 @@ if (!isLoggedIn()) {
                     <li>
                         <a href="../admin/home/">Home</a>
                     </li>
+                    <li>
+                        <a href="../admin/users/">Users</a>
+                    </li>
                 <?php endif; ?> 
                     <li class="active-link">
                         <a href="?">Inbound Inquiry</a>
@@ -65,7 +68,7 @@ if (!isLoggedIn()) {
             <div class="table-container">
                 <h3><strong>Inbound Inquiries</strong></h3>
                 <div class="tableDiv">
-                    <table id="inquiryTable" class="table data-table">
+                    <table id="inquiryTable" class="table cell-border data-table">
                         <thead>
                             <tr class="thead-dark">
                                 <th scope="col">#</th>
@@ -84,16 +87,16 @@ if (!isLoggedIn()) {
                                 $info_array = ($result->RequestData);
                                 $th = "th";
 
-                                for($i = 0; $i < count($info_array); $i++){
+                                foreach($info_array as $inquiry){
                                     echo "<tr>";
-                                    echo "<$th>".$info_array[$i]->id."</$th>";
-                                    echo "<$th>".$info_array[$i]->name."</$th>";
-                                    echo "<$th>".$info_array[$i]->telephone_number."</$th>";
-                                    echo "<$th>".$info_array[$i]->inquiry_type."</$th>";
-                                    echo "<$th>".$info_array[$i]->product_name."</$th>";
-                                    echo "<$th>".$info_array[$i]->form_id."</$th>";
-                                    echo "<$th>".$info_array[$i]->status_id."</$th>";
-                                    echo "<$th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</$th>";
+                                    echo "<$th>".$inquiry->id."</$th>";
+                                    echo "<$th>".$inquiry->name."</$th>";
+                                    echo "<$th>".$inquiry->telephone_number."</$th>";
+                                    echo "<$th>".$inquiry->inquiry_type."</$th>";
+                                    echo "<$th>".$inquiry->product_name."</$th>";
+                                    echo "<$th>".$inquiry->form_id."</$th>";
+                                    echo "<$th>".$inquiry->status_id."</$th>";
+                                    echo "<$th>".date('d M, Y',strtotime($inquiry->created_at))."</$th>";
                                     echo "</tr>";
                                 }
                             ?>

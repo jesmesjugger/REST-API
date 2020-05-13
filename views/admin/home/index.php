@@ -45,6 +45,9 @@ if (!isLoggedIn()) {
                         <a href="?">Home</a>
                     </li>
                     <li>
+                        <a href="../users">Users</a>
+                    </li>
+                    <li>
                         <a href="../../inbound-inquiry/">Inbound Inquiry</a>
                     </li>
                     <li>

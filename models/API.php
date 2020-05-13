@@ -29,6 +29,10 @@ class API{
         return self::$api."update/".$role."?username=\"$username\"&pass=\"$password\"";
     }
 
+    public static function admin_getUsers($username,$password){
+        return self::$api."users?username=\"$username\"&pass=\"$password\"";
+    }
+
     public static function getHeaders(){
         return self::$headers;
     }

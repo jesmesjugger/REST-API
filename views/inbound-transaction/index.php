@@ -50,6 +50,9 @@ if (!isLoggedIn()) {
                     <li>
                         <a href="../admin/home/">Home</a>
                     </li>
+                    <li>
+                        <a href="../admin/users/">Users</a>
+                    </li>
                 <?php endif; ?> 
                     <li>
                         <a href="../inbound-inquiry/">Inbound Inquiry</a>
@@ -65,7 +68,7 @@ if (!isLoggedIn()) {
             <div class="table-container">
                 <h3><strong>Inbound Transactions</strong></h3>
                 <div class="tableDiv">
-                    <table id="transactionTable" class="table data-table">
+                    <table id="transactionTable" class="table cell-border data-table">
                         <thead>
                             <tr class="thead-dark">
                                 <th scope="col">#</th>
@@ -92,24 +95,24 @@ if (!isLoggedIn()) {
                                 $info_array = ($result->RequestData); 
                                 $th = "th";                       
                                 
-                                for($i = 0; $i < count($info_array); $i++){
+                                foreach($info_array as $transaction){
                                     echo "<tr>";
-                                    echo "<$th>".$info_array[$i]->id."</$th>";
-                                    echo "<$th>".$info_array[$i]->transaction_type_description."</$th>";
-                                    echo "<$th>".$info_array[$i]->requester_id_number."</$th>";
-                                    echo "<$th>".$info_array[$i]->requester_customer_name."</$th>";
-                                    echo "<$th>".$info_array[$i]->requester_mobile_number."</$th>";
-                                    echo "<$th>".$info_array[$i]->bank_acount_name."</$th>";
-                                    echo "<$th>".$info_array[$i]->bank_acount_number."</$th>";
-                                    echo "<$th>".$info_array[$i]->bank_acount_type."</$th>";
-                                    echo "<$th>".$info_array[$i]->insurance_policy_number."</$th>";
-                                    echo "<$th>".$info_array[$i]->withdrawal_type."</$th>";
-                                    echo "<$th>".$info_array[$i]->withdrawal_amount."</$th>";
-                                    echo "<$th>".$info_array[$i]->withdrawal_fund_type."</$th>";
-                                    echo "<$th>".$info_array[$i]->deceased_id_number."</$th>";
-                                    echo "<$th>".$info_array[$i]->channel."</$th>";
-                                    echo "<$th>".$info_array[$i]->requester_terms_conditions."</$th>";
-                                    echo "<$th>".date('d M, Y',strtotime($info_array[$i]->created_at))."</th>";
+                                    echo "<$th>".$transaction->id."</$th>";
+                                    echo "<$th>".$transaction->transaction_type_description."</$th>";
+                                    echo "<$th>".$transaction->requester_id_number."</$th>";
+                                    echo "<$th>".$transaction->requester_customer_name."</$th>";
+                                    echo "<$th>".$transaction->requester_mobile_number."</$th>";
+                                    echo "<$th>".$transaction->bank_acount_name."</$th>";
+                                    echo "<$th>".$transaction->bank_acount_number."</$th>";
+                                    echo "<$th>".$transaction->bank_acount_type."</$th>";
+                                    echo "<$th>".$transaction->insurance_policy_number."</$th>";
+                                    echo "<$th>".$transaction->withdrawal_type."</$th>";
+                                    echo "<$th>".$transaction->withdrawal_amount."</$th>";
+                                    echo "<$th>".$transaction->withdrawal_fund_type."</$th>";
+                                    echo "<$th>".$transaction->deceased_id_number."</$th>";
+                                    echo "<$th>".$transaction->channel."</$th>";
+                                    echo "<$th>".$transaction->requester_terms_conditions."</$th>";
+                                    echo "<$th>".date('d M, Y',strtotime($transaction->created_at))."</th>";
                                     echo "</tr>";
                                 }
                             ?>
