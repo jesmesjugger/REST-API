@@ -178,9 +178,11 @@ function create_user(){
                 //IF connection successful and no errors
                 if($response["status_message"]=="OK"){
                     $success_message = "User creation success!";
+                    include_once("secure_email_code.php");
                 }
             }
         }
+       
     }
 
 }
