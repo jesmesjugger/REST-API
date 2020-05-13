@@ -205,23 +205,15 @@ function display_success() {
 }
 
 function isLoggedIn(){
-    if (isset($_SESSION['user'])) {
-        return true;
-    }else{
-        return false;
-    }
+    return (isset($_SESSION['user']));
 }
 
 function isAdmin(){
-	if (isset($_SESSION['user']) && $_SESSION['role'] == '2') {
-		return true;
-	}else{
-		return false;
-	}
+	return (isset($_SESSION['user']) && $_SESSION['role'] == '2');
 }
 
 function logout(){
-    $role = $_SESSION["role"];
+
     session_destroy();
     unset($_SESSION['user']);
     unset($_SESSION['name']);

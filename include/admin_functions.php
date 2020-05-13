@@ -5,5 +5,6 @@ function error($state,$msg){
 }
 
 $id = $_POST["field"];
+
 echo json_encode($id);
 ?>

@@ -64,7 +64,10 @@ function loadTransactionGraph(link){
             {"transaction_type" :"Partial Withdrawal","quantity" :pwcount},
             {"transaction_type" :"Funeral Claim","quantity" :fnclaim}
         ],
-        schemeSet1 = d3.scaleOrdinal().range(d3.schemeSet1);
+        schemeSet1 = d3.scaleOrdinal().range(d3.schemeSet1),
+        tooltip = d3.select("#transaction-graph")
+        .append("div")
+        .attr("class","d3-tooltip");
     
         xScale.domain(f_data.map(d => d.transaction_type));
         yScale.domain([0, d3.max(f_data, d => d.quantity)]);
@@ -76,8 +79,14 @@ function loadTransactionGraph(link){
         
         g.append("g")
             .attr("class", "axis axis-y")
-            .call(
-                d3.axisLeft(yScale));
+            .call(d3.axisLeft(yScale))
+            .append("text")
+            .attr("transform","rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
+            .attr("text-anchor", "end")
+            .attr("fill", "#5D6971")
+            .text("Number of Transactions");
         
         g.selectAll(".bar")
             .data(f_data)
@@ -88,8 +97,20 @@ function loadTransactionGraph(link){
             .attr("width", xScale.bandwidth())
             .attr("height", d => height - yScale(d.quantity))
             .attr("fill",(d,i)=>schemeSet1(i))
-            .on("mouseover",mouseOver)
-            .on("mouseout",function(d,i){d3.select(this).attr('fill',schemeSet1(i))});
+            .on("mouseover",function(d){
+                d3.select(this).attr('fill','#004445');
+                tooltip.style("visibility", "visible");
+            })
+            .on("mousemove",function(d){
+                tooltip
+                .style("left", (d3.mouse(this)[0]+20) + "px")
+                .style("top", (d3.mouse(this)[1]+25) + "px")
+                .html(d.quantity+" transactions");
+            })
+            .on("mouseout",function(d,i){
+                d3.select(this).attr('fill',schemeSet1(i));
+                tooltip.style("visibility", "hidden");
+            });
         
         svg.append("text")
             .attr("transform", "translate(100,0)")
@@ -136,7 +157,10 @@ function loadInquiryGraph(link){
             {"inquiry_type" :"Funeral", "quantity" :fiCount},
             {"inquiry_type" :"Personal","quantity" :piCount},
         ],
-        schemeCategory10 = d3.scaleOrdinal().range(d3.schemeCategory10);
+        schemeCategory10 = d3.scaleOrdinal().range(d3.schemeCategory10),
+        tooltip = d3.select("#inquiry-graph")
+        .append("div")
+        .attr("class","d3-tooltip");
 
         xScale.domain(f_data.map(d => d.inquiry_type));
         yScale.domain([0, d3.max(f_data, d => d.quantity)]);
@@ -146,8 +170,14 @@ function loadInquiryGraph(link){
             .call(d3.axisBottom(xScale));
         
         g.append("g")
-            .call(
-                d3.axisLeft(yScale));
+            .call(d3.axisLeft(yScale))
+            .append("text")
+            .attr("transform","rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
+            .attr("text-anchor", "end")
+            .attr("fill", "#5D6971")
+            .text("Number of Inquiries");
         
         g.selectAll(".bar")
             .data(f_data)
@@ -158,9 +188,21 @@ function loadInquiryGraph(link){
             .attr("width", xScale.bandwidth())
             .attr("height", d => height - yScale(d.quantity))
             .attr("fill",(d,i)=>schemeCategory10(i))
-            .on("mouseover",mouseOver)
-            .on("mouseout",function(d,i){d3.select(this).attr('fill',schemeCategory10(i))});
-        
+            .on("mouseover",function(d){
+                d3.select(this).attr('fill','#004445');
+                tooltip.style("visibility", "visible");
+            })
+            .on("mousemove",function(d){
+                tooltip
+                .style("left", (d3.mouse(this)[0]+20) + "px")
+                .style("top", (d3.mouse(this)[1]+25) + "px")
+                .html(d.quantity+" inquiries");
+            })
+            .on("mouseout",function(d,i){
+                d3.select(this).attr('fill',schemeCategory10(i));
+                tooltip.style("visibility", "hidden");
+            });
+
         svg.append("text")
             .attr("transform", "translate(100,0)")
             .attr("x", 60)
@@ -174,10 +216,6 @@ function loadInquiryGraph(link){
             .attr("text-anchor", "left")  
             .style("font-size", "20px") 
             .style("font-weight", "bold")  
-            .text(`Couldn't open the data file: "${err}".`);
+            .text(`Couldn't open the data file:"${err}".`);
     });
-}
-
-function mouseOver(d,i){
-    d3.select(this).attr('fill',"#004445");
 }

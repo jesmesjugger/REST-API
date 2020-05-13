@@ -50,3 +50,16 @@ Graph Elements
     overflow: auto;
     /* box-shadow: 0 3px 6px rgba(0,0,0,0.2); */
 }
+
+.d3-tooltip{
+    position: absolute;
+    visibility: hidden;
+    z-index: 10;
+    line-height: 1;
+    padding: 4px;
+    margin: 0px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+}
