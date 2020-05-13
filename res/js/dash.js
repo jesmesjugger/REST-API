@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 
     /**
-     * Datatables
+     * Data-tables
      */
     var transactTable = $('#transactionTable').DataTable({
         "iDisplayLenth" :  5,
@@ -33,7 +33,6 @@ $(document).ready(function(){
         ]
     });
     
-
     $('#inquiryTable').DataTable({
         "iDisplayLenth" :  5,
         "aLengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
@@ -49,18 +48,20 @@ $(document).ready(function(){
         ]
     });
 
-    $('#transactionTable tbody').on('click','tr',function(){
-        let row_data = transactTable.row(this).data();
-        var obj = {
-            "id": row_data[0],
-            "field": row_data[1]
-        }
+    $('#usersTable').DataTable();
 
-        $.post("../../include/admin_functions.php",obj,function(data,status){
-            console.log('data:  ',data);
-            //TODO: redirect page to edit page.
-        })
+    // $('#transactionTable tbody').on('click','tr',function(){
+    //     let row_data = transactTable.row(this).data();
+    //     var obj = {
+    //         "id": row_data[0],
+    //         "field": row_data[1]
+    //     }
 
-    });
+    //     $.post("../../include/admin_functions.php",obj,function(data,status){
+    //         console.log('data:  ',data);
+    //         //TODO: redirect page to edit page.
+    //     })
+
+    // });
     
 });

@@ -10,4 +10,4 @@ function getResultObject($payload){
    $result = json_decode($response);
    curl_close($client);
    return $result;
- }
+}
