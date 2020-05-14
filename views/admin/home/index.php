@@ -1,6 +1,6 @@
 <?php 
-define("ROOT","../../../");
-include(ROOT.'/include/api_auth.php');
+include('../../../include/api_auth.php');
+include('../../../include/admin_functions.php');
 
 if (!isAdmin()) {
 	logout();
@@ -29,11 +29,16 @@ if (!isLoggedIn()) {
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
-            <a class="navbar-brand" href="?"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
+            <?php if($_SESSION["role"]=="1"): ?>
+                <a class="navbar-brand" href="../dashboard/"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
+            <?php elseif($_SESSION["role"]=="2"): ?>
+                <a class="navbar-brand" href="../home/"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
+            <?php endif; ?>
             <a href="../../profile/" class="user-profile ml-auto"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
             <a href="index.php?logout_btn=true" id="logout_btn" class="logout-spn ml-3 mr-3">LOGOUT</a>
-            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target=".sidebar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav><!-- END NAV TOP  -->
@@ -43,9 +48,6 @@ if (!isLoggedIn()) {
                 <ul class="nav" id="main-menu">
                     <li class="active-link">
                         <a href="?">Home</a>
-                    </li>
-                    <li>
-                        <a href="../users">Users</a>
                     </li>
                     <li>
                         <a href="../../inbound-inquiry/">Inbound Inquiry</a>
@@ -58,40 +60,47 @@ if (!isLoggedIn()) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <?php echo display_error(); ?>
-            <?php echo display_success(); ?>
-            <h3>Create User</h3>
-            <hr>
-            <form action="" method="POST">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Role</label>
-                    <select name="role" class="form-control" id="user_type" required>
-                        <option value="1">User</option>
-                        <option value="2">Admin</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label>Confirm password</label>
-                    <input type="password" class="form-control" name="confirmPass" required>
-                </div>
-                <button type="submit" class="btn btn-outline-success" name="register_btn"> + Create user</button>
-            </form>
+            <div class="table-container">
+                <p class="text-right"><a id="newUserBtn" href="../users/new" class="btn btn-outline-success">Create new user</a></p>
+                <div class="tableDiv">
+                    <table id="usersTable" class="table cell-border table-hover data-table">
+                        <thead>
+                            <tr class="thead-dark">
+                                <th scope="col">id</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Created at</th>
+                                <th scope="col">Updated at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $result = getUsers();
+                                $info_array = ($result->RequestData);
+                                $td = "td";
+
+                                foreach($info_array as $user){
+                                    $create_date = date('d-m-Y',strtotime($user->created_at));
+                                    $create_time = date('H:i:s',strtotime($user->created_at));
+                                    $update_date = date('d-m-Y',strtotime($user->updated_at));
+                                    $update_time = date('H:i:s',strtotime($user->updated_at));
+                                    echo "<tr>";
+                                    echo "<$td>".$user->id."</$td>";
+                                    echo "<$td>".$user->username."</$td>";
+                                    echo "<$td>".$user->email."</$td>";
+                                    echo "<$td>".$user->name."</$td>";
+                                    echo $user->role==1? "<$td>User</$td>" : "<$td>Admin</$td>";
+                                    echo "<$td>$create_date $create_time</$td>";
+                                    echo "<$td>$update_date $update_time</$td>";
+                                    echo "</tr>";
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div> <!-- end #tableDiv w/ inquiry -->
+            </div> <!-- end .Table-Container div -->
         </div><!-- END PAGE WRAPPER  -->
 
     </div><!-- /. WRAPPER  -->
@@ -99,5 +108,14 @@ if (!isLoggedIn()) {
 
 <script src="../../../res/vendors/jquery/jquery-3.4.1.js"></script>
 <script src="../../../res/vendors/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+<script src="../../../res/vendors/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="../../../res/vendors/DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="../../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.flash.min.js"></script>
+<script src="../../../res/vendors/DataTables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="../../../res/vendors/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="../../../res/vendors/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="../../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.html5.min.js"></script>
+<script src="../../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.print.min.js"></script>
+<script src="../../../res/vendors/d3/d3.min.js"></script>
 <script src="../../../res/js/dash.js"></script>
 </html>

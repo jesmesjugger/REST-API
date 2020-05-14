@@ -78,18 +78,25 @@ function updatePassword($currentPass, $newPass, $confirmNewPass){
 function show_profile_errors() {
     global $profile_errors;
     if (count($profile_errors) > 0){
-        echo '<div class="text-center mt-3 text-danger">';
-            foreach ($profile_errors as $error){
-                echo '<h6>'.$error.'</h6>';
-                echo '<br>';
-            }
-        echo '</div>';
+        foreach ($profile_errors as $error){
+            echo '<div class="alert alert-danger alert-dismissible fade show">';
+            echo    '<h6>'.$error.'</h6>';
+            echo    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+        }
     }
 }
 
 function show_profile_success() {
     global $success_message;
     if (!empty($success_message)){
-        echo '<h6 class="text-center mt-3 text-success">'.$success_message.'</h6>';
+        echo '<div class="alert alert-success alert-dismissible fade show">';
+        echo    '<h6>'.$success_message.'</h6>';
+        echo    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
     }
 }

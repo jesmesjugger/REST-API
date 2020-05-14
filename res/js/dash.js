@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     /**
      * Navbar Resize
      */
@@ -13,11 +12,25 @@ $(document).ready(function(){
         }
     });
 
+    /**
+     * Hide & Show relevant forms
+     */
+    $('#detailsPill').click(function(){
+        $('.list-group-item').removeClass('active');
+        $('#detailsPill').addClass('active');
+        toggleActiveForm();
+    });
+    $('#rolesPill').click(function(){
+        $('.list-group-item').removeClass('active');
+        $('#rolesPill').addClass('active');
+        toggleActiveForm();
+    });
 
+    
     /**
      * Data-tables
      */
-    var transactTable = $('#transactionTable').DataTable({
+    $('#transactionTable').DataTable({
         "iDisplayLenth" :  5,
         "aLengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
         dom: 'lBfrtip',
@@ -63,5 +76,19 @@ $(document).ready(function(){
     //     })
 
     // });
+
+    /**
+     * FUNCTIONS
+     */
+    function toggleActiveForm(){
+        $('.form-content-div').addClass('hidden');
+
+        if($('#detailsPill').hasClass('active')){
+            $('#detailsForm').removeClass('hidden');
+        }
+        else if($('#rolesPill').hasClass('active')){
+            $('#rolesForm').removeClass('hidden');
+        }
+    }
     
 });

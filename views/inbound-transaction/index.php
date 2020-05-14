@@ -50,9 +50,6 @@ if (!isLoggedIn()) {
                     <li>
                         <a href="../admin/home/">Home</a>
                     </li>
-                    <li>
-                        <a href="../admin/users/">Users</a>
-                    </li>
                 <?php endif; ?> 
                     <li>
                         <a href="../inbound-inquiry/">Inbound Inquiry</a>
@@ -93,26 +90,26 @@ if (!isLoggedIn()) {
                             <?php
                                 $result = getResultObject("transaction");
                                 $info_array = ($result->RequestData); 
-                                $th = "th";                       
+                                $td = "td";                       
                                 
                                 foreach($info_array as $transaction){
                                     echo "<tr>";
-                                    echo "<$th>".$transaction->id."</$th>";
-                                    echo "<$th>".$transaction->transaction_type_description."</$th>";
-                                    echo "<$th>".$transaction->requester_id_number."</$th>";
-                                    echo "<$th>".$transaction->requester_customer_name."</$th>";
-                                    echo "<$th>".$transaction->requester_mobile_number."</$th>";
-                                    echo "<$th>".$transaction->bank_acount_name."</$th>";
-                                    echo "<$th>".$transaction->bank_acount_number."</$th>";
-                                    echo "<$th>".$transaction->bank_acount_type."</$th>";
-                                    echo "<$th>".$transaction->insurance_policy_number."</$th>";
-                                    echo "<$th>".$transaction->withdrawal_type."</$th>";
-                                    echo "<$th>".$transaction->withdrawal_amount."</$th>";
-                                    echo "<$th>".$transaction->withdrawal_fund_type."</$th>";
-                                    echo "<$th>".$transaction->deceased_id_number."</$th>";
-                                    echo "<$th>".$transaction->channel."</$th>";
-                                    echo "<$th>".$transaction->requester_terms_conditions."</$th>";
-                                    echo "<$th>".date('d M, Y',strtotime($transaction->created_at))."</th>";
+                                    echo "<$td>".$transaction->id."</$td>";
+                                    echo "<$td>".$transaction->transaction_type_description."</$td>";
+                                    echo "<$td>".$transaction->requester_id_number."</$td>";
+                                    echo "<$td>".$transaction->requester_customer_name."</$td>";
+                                    echo "<$td>".$transaction->requester_mobile_number."</$td>";
+                                    echo "<$td>".$transaction->bank_acount_name."</$td>";
+                                    echo "<$td>".$transaction->bank_acount_number."</$td>";
+                                    echo "<$td>".$transaction->bank_acount_type."</$td>";
+                                    echo "<$td>".$transaction->insurance_policy_number."</$td>";
+                                    echo "<$td>".$transaction->withdrawal_type."</$td>";
+                                    echo "<$td>".$transaction->withdrawal_amount."</$td>";
+                                    echo "<$td>".$transaction->withdrawal_fund_type."</$td>";
+                                    echo "<$td>".$transaction->deceased_id_number."</$td>";
+                                    echo "<$td>".$transaction->channel."</$td>";
+                                    echo "<$td>".$transaction->requester_terms_conditions."</$td>";
+                                    echo "<$td>".date('d M, Y',strtotime($transaction->created_at))."</$td>";
                                     echo "</tr>";
                                 }
                             ?>

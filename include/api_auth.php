@@ -188,19 +188,26 @@ function create_user(){
 function display_error() {
     global $errors;
     if (count($errors) > 0){
-        echo '<div class="text-center mt-3 text-danger">';
-            foreach ($errors as $error){
-                echo '<h6>'.$error.'</h6>';
-                echo '<br>';
-            }
-        echo '</div>';
+        foreach ($errors as $error){
+            echo '<div class="alert alert-danger alert-dismissible fade show">';
+            echo    '<h6>'.$error.'</h6>';
+            echo    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+        } 
     }
 }
 
 function display_success() {
     global $success_message;
     if (!empty($success_message)){
-        echo '<h4 class="text-center mt-3 text-success">'.$success_message.'</h4>';
+        echo '<div class="alert alert-success alert-dismissible fade show">';
+        echo    '<h6>'.$success_message.'</h6>';
+        echo    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
     }
 }
 

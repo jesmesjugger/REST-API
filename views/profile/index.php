@@ -47,9 +47,6 @@ if (!isLoggedIn()) {
                     <li>
                         <a href="../admin/home/">Home</a>
                     </li>
-                    <li>
-                        <a href="../admin/users/">Users</a>
-                    </li>
                 <?php endif; ?>  
                     <li>
                         <a href="../inbound-inquiry/">Inbound Inquiry</a>

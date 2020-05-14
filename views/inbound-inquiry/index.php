@@ -50,9 +50,6 @@ if (!isLoggedIn()) {
                     <li>
                         <a href="../admin/home/">Home</a>
                     </li>
-                    <li>
-                        <a href="../admin/users/">Users</a>
-                    </li>
                 <?php endif; ?> 
                     <li class="active-link">
                         <a href="?">Inbound Inquiry</a>
@@ -85,18 +82,18 @@ if (!isLoggedIn()) {
                             <?php
                                 $result = getResultObject("inquiry");
                                 $info_array = ($result->RequestData);
-                                $th = "th";
+                                $td = "td";
 
                                 foreach($info_array as $inquiry){
                                     echo "<tr>";
-                                    echo "<$th>".$inquiry->id."</$th>";
-                                    echo "<$th>".$inquiry->name."</$th>";
-                                    echo "<$th>".$inquiry->telephone_number."</$th>";
-                                    echo "<$th>".$inquiry->inquiry_type."</$th>";
-                                    echo "<$th>".$inquiry->product_name."</$th>";
-                                    echo "<$th>".$inquiry->form_id."</$th>";
-                                    echo "<$th>".$inquiry->status_id."</$th>";
-                                    echo "<$th>".date('d M, Y',strtotime($inquiry->created_at))."</$th>";
+                                    echo "<$td>".$inquiry->id."</$td>";
+                                    echo "<$td>".$inquiry->name."</$td>";
+                                    echo "<$td>".$inquiry->telephone_number."</$td>";
+                                    echo "<$td>".$inquiry->inquiry_type."</$td>";
+                                    echo "<$td>".$inquiry->product_name."</$td>";
+                                    echo "<$td>".$inquiry->form_id."</$td>";
+                                    echo "<$td>".$inquiry->status_id."</$td>";
+                                    echo "<$td>".date('d M, Y',strtotime($inquiry->created_at))."</$td>";
                                     echo "</tr>";
                                 }
                             ?>

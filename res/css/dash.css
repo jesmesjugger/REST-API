@@ -1,6 +1,17 @@
 /**
+GENERAL
+**/
+.hidden {
+    display: none;
+}
+
+/**
 DASHBOARD CONTENT
 **/
+body {
+    font-size: 14px;
+}
+
 .user-profile{
     color: white;
     font-size: 30px;
@@ -21,6 +32,10 @@ DASHBOARD CONTENT
     color: #049875;
 }
 
+table {
+    border-spacing: 0;
+}
+
 .table-container {
     padding: 5px;
 }
@@ -36,6 +51,16 @@ DASHBOARD CONTENT
 
 .table-hover tr:hover{
     cursor: pointer;
+}
+
+#newUserBtn{
+    border: 1px solid #049875 ;
+    color: #049875;
+}
+
+#newUserBtn:hover{
+    background-color: #049875 ;
+    color: #ffffff;
 }
 
 
