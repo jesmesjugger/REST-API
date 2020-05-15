@@ -14,8 +14,6 @@ if (!isLoggedIn()) {
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../../res/vendors/bootstrap-4.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../res/vendors/fontawesome-5.13.0/css/all.css">
-    <link rel="stylesheet" href="../../res/vendors/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="../../res/vendors/DataTables/Buttons-1.6.1/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="../../res/css/template.css">
     <link rel="stylesheet" href="../../res/css/dash.css">
     
@@ -66,14 +64,6 @@ if (!isLoggedIn()) {
     
 <script src="../../res/vendors/jquery/jquery-3.4.1.js"></script>
 <script src="../../res/vendors/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
-<script src="../../res/vendors/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="../../res/vendors/DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
-<script src="../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.flash.min.js"></script>
-<script src="../../res/vendors/DataTables/JSZip-2.5.0/jszip.min.js"></script>
-<script src="../../res/vendors/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
-<script src="../../res/vendors/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
-<script src="../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.html5.min.js"></script>
-<script src="../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.print.min.js"></script>
 <script src="../../res/vendors/d3/d3.min.js"></script>
 <script src="../../res/js/dash.js"></script>
 <script src="../../res/js/graphs.js"></script>

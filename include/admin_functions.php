@@ -1,7 +1,12 @@
 <?php
 include_once(__DIR__."/../models/API.php");
+include_once(__DIR__."/../models/User.php");
 
-function getUsers(){
+if(isset($_POST['data'])){
+    fetchUserRecord($_POST['data']);
+}
+
+function getAllUsers(){
     if($_SESSION['role']==2){
         $url = API::admin_getUsers($_SESSION['user'],$_SESSION['pass']);
         $client = curl_init($url);
@@ -16,11 +21,16 @@ function getUsers(){
     }
 }
 
+function fetchUserRecord($dataObj){
+    //$user = new User()
+    $data = json_decode($dataObj);
+    $id = $data->id;
+    echo $id;
+}
+
 // function error($state,$msg){
 //     $response = array("success"=>$state,"message"=>$msg);
 //     return json_encode($response);
 // }
-// $id = $_POST["field"];
-// echo json_encode($id);
 
 ?>

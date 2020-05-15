@@ -77,7 +77,7 @@ if (!isLoggedIn()) {
                         </thead>
                         <tbody>
                             <?php
-                                $result = getUsers();
+                                $result = getAllUsers();
                                 $info_array = ($result->RequestData);
                                 $td = "td";
 
@@ -117,5 +117,6 @@ if (!isLoggedIn()) {
 <script src="../../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.html5.min.js"></script>
 <script src="../../../res/vendors/DataTables/Buttons-1.6.1/js/buttons.print.min.js"></script>
 <script src="../../../res/vendors/d3/d3.min.js"></script>
+<script src="../../../res/js/dataTables.js"></script>
 <script src="../../../res/js/dash.js"></script>
 </html>

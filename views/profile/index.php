@@ -59,23 +59,29 @@ if (!isLoggedIn()) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <div id="profile-section" class="text-center">
+            <div id="profile-section" class="text-center mb-4">
                 <p><i id="profile-section-icon" class="fa fa-user-circle"></i></p>
                 <h5><strong><?php echo $_SESSION['name']?></strong></h5>
             </div>
 
             <form action="index.php" method="POST">
-                <div class="form-group">
-                    <label for="currentpassword">Current Password</label>
-                    <input type="password" name="currentPassword" class="form-control" required>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="currentpassword">Current Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="currentPassword" class="form-control" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="newpassword">New Password</label>
-                    <input type="password" name="newPassword" class="form-control" required>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="newpassword">New Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="newPassword" class="form-control" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="confirmpassword">Confirm New Password</label>
-                    <input type="password" name="confirmPassword" class="form-control" required>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="confirmpassword">Confirm New Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="confirmPassword" class="form-control" required>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-success mx-auto" name="updatePasswordBtn" style="display:block;">Update</button>
             </form>

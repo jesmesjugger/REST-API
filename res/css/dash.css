@@ -63,6 +63,10 @@ table {
     color: #ffffff;
 }
 
+li.list-group-item:hover{
+    cursor: pointer;
+}
+
 
 /**
 USER PROFILE PAGE
