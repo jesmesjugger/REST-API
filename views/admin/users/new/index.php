@@ -19,8 +19,6 @@ if (!isLoggedIn()) {
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../../../../res/vendors/bootstrap-4.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../res/vendors/fontawesome-5.13.0/css/all.css">
-    <link rel="stylesheet" href="../../../../res/vendors/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../res/vendors/DataTables/Buttons-1.6.1/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="../../../../res/css/template.css">
     <link rel="stylesheet" href="../../../../res/css/dash.css">
     
@@ -60,34 +58,46 @@ if (!isLoggedIn()) {
             <h4>Create User</h4>
             <hr>
             <form action="index.php" method="POST">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name" required>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" name="username" required>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="username" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email" required>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Role</label>
-                    <select name="role" class="form-control" id="user_type" required>
-                        <option value="1">User</option>
-                        <option value="2">Admin</option>
-                    </select>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Role</label>
+                    <div class="col-sm-10">
+                        <select name="role" class="form-control" id="user_type" required>
+                            <option value="1">User</option>
+                            <option value="2">Admin</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" required>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Confirm password</label>
-                    <input type="password" class="form-control" name="confirmPass" required>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Confirm password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="confirmPass" required>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-outline-success mx-auto my-auto" name="register_btn" style="display:block;"> + Create user</button>
+                <button type="submit" class="btn btn-outline-success mx-auto" name="register_btn" style="display:block;"> + Create user</button>
             </form>
         </div><!-- END PAGE WRAPPER  -->
 
