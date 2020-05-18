@@ -34,27 +34,9 @@ $(document).ready(function(){
     });
 
     var usersTable = $('#usersTable').DataTable();
-
     $('#usersTable tbody').on('click','tr',function(){
         let row_data = usersTable.row(this).data();
-        var data = {
-            "id": row_data[0],
-            "field": row_data[1]
-        }
-
-        // $.ajax({
-        //     url:'../../../include/admin_functions.php',
-        //     type: 'POST',
-        //     data: {"data": JSON.stringify(data)},
-        //     success: function(data){
-        //         //window.location.href = "../users/update/";
-        //         console.log("echoed: "+data);
-        //     },
-        //     error: function() {
-        //         console.log("failed to send obj");
-        //     }
-        // });
-
+        window.location.href="../users/update/index.php?id="+row_data[0];
     });
-
+    
 });

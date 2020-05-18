@@ -40,5 +40,26 @@ $(document).ready(function(){
             $('#rolesForm').removeClass('hidden');
         }
     }
+
+    /*function fetchLocalStorageData(){
+        var pathArr = window.location.pathname.split("/");
+        if(pathArr[pathArr.length-2] == "update"){
+            if(localStorage.getItem("data")){
+                var row_obj = JSON.parse(localStorage.getItem('data'));
+
+                $.ajax({
+                    url:'../../../../include/admin_functions.php',
+                    type: "POST",
+                    data: {"data": "test"},
+                    success: function(res){
+                        //console.log(res);
+                    },
+                    error: function() {
+                        console.log("Failed");
+                    }
+                });  
+            }
+        }
+    }*/
     
 });

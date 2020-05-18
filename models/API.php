@@ -13,6 +13,10 @@ class API{
         'X-MicrosoftAjax: Delta=true'
     ];
 
+    public static function getHeaders(){
+        return self::$headers;
+    }
+
     public static function getCreateApi(){
         return self::$api.'create';
     }
@@ -33,7 +37,10 @@ class API{
         return self::$api."users?username=\"$username\"&pass=\"$password\"";
     }
 
-    public static function getHeaders(){
-        return self::$headers;
+    public static function admin_getSingleUser($id,$username,$password){
+        return self::$api."user/$id?username=\"$username\"&pass=\"$password\"";
     }
+    
+
+    
 }

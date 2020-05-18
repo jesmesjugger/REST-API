@@ -56,7 +56,7 @@ if (!isLoggedIn()) {
         <div id="page-wrapper">
             <?php echo display_error(); ?>
             <?php echo display_success(); ?>
-            <h4>Update User</h4>
+            <h4>Update User </h4>
             <hr>
             <div class="row">
                 <div class="col-md-3 py-2" >
@@ -70,23 +70,23 @@ if (!isLoggedIn()) {
                 <div class="col-md-9 py-3" style="border: 1px solid rgba(0,0,0,0.1); border-radius: 8px">
                     <div class="card" style="border:none;">
                         <div id="detailsForm" class="form-content-div">
-                            <form action="" method="POST">
+                            <form action="index.php" method="POST">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Full names</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="name" required>
+                                        <input type="text" class="form-control" name="name" value="<?php echo $user->getName();?>" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Username</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="username" required>
+                                        <input type="text" class="form-control" name="username" value="<?php echo $user->getUsername();?>" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" name="email" required>
+                                        <input type="email" class="form-control" name="email" value="<?php echo $user->getEmail();?>" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -99,9 +99,11 @@ if (!isLoggedIn()) {
                             </form>
                         </div>
                         <div id="rolesForm" class="form-content-div hidden">
+                            <p>Current Role: <?php echo $user->getRole() == 1? "User":"Admin"; ?> </p>
+                            <hr>
                             <form action="">
                                 <div class="form-group">
-                                    <label>Role</label>
+                                    <label>Update Role</label>
                                     <select name="role" class="form-control" id="user_type" required>
                                         <option value="1">User</option>
                                         <option value="2">Admin</option>
