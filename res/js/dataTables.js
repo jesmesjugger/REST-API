@@ -33,10 +33,10 @@ $(document).ready(function(){
         ]
     });
 
-    var usersTable = $('#usersTable').DataTable();
-    $('#usersTable tbody').on('click','tr',function(){
-        let row_data = usersTable.row(this).data();
-        window.location.href="../users/update/index.php?id="+row_data[0];
+    $('#usersTable').DataTable({
+        "columnDefs": [
+          { "orderable": false, "targets": 7 }
+        ]
     });
-    
+
 });

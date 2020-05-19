@@ -220,14 +220,14 @@ function isAdmin(){
 }
 
 function logout(){
-
     session_destroy();
     unset($_SESSION['user']);
     unset($_SESSION['name']);
     unset($_SESSION['pass']);
     unset($_SESSION['email']);
     unset($_SESSION['role']);
-    header("location: ./");
+    echo $_SERVER['REQUEST_URI'];
+    header("location: ");
 }
 
 ?>

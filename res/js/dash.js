@@ -41,25 +41,27 @@ $(document).ready(function(){
         }
     }
 
-    /*function fetchLocalStorageData(){
-        var pathArr = window.location.pathname.split("/");
-        if(pathArr[pathArr.length-2] == "update"){
-            if(localStorage.getItem("data")){
-                var row_obj = JSON.parse(localStorage.getItem('data'));
+    // function fetchLocalStorageData(){
+    //     var pathArr = window.location.pathname.split("/");
 
-                $.ajax({
-                    url:'../../../../include/admin_functions.php',
-                    type: "POST",
-                    data: {"data": "test"},
-                    success: function(res){
-                        //console.log(res);
-                    },
-                    error: function() {
-                        console.log("Failed");
-                    }
-                });  
-            }
-        }
-    }*/
+    //     if(pathArr[pathArr.length-2] == "update"){
+    //         if(localStorage.getItem("data")){
+    //             //var row_obj = JSON.parse(localStorage.getItem('data'));
+
+    //             $.ajax({
+    //                 url:'../../../../include/admin_functions.php',
+    //                 type: "POST",
+    //                 data: {"data": "1234567890"},
+    //                 success: function(res){
+    //                     console.log(res);
+    //                 },
+    //                 error: function() {
+    //                     console.log("Failed");
+    //                 }
+    //             });  
+
+    //         }
+    //     }
+    // }
     
 });

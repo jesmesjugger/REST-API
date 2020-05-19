@@ -12,6 +12,10 @@ body {
     font-size: 14px;
 }
 
+.nav-link.dropdown-toggle {
+    color: white;
+}
+
 .user-profile{
     color: white;
     font-size: 30px;
@@ -49,8 +53,12 @@ table {
     width: 100%;
 }
 
-.table-hover tr:hover{
-    cursor: pointer;
+td>a {
+    color: #02c496;
+}
+
+td>a:hover {
+    color: #026b53;
 }
 
 #newUserBtn{
