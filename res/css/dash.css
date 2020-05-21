@@ -53,12 +53,17 @@ table {
     width: 100%;
 }
 
+<<<<<<< HEAD
 td>a {
     color: #02c496;
 }
 
 td>a:hover {
     color: #026b53;
+=======
+.table-hover tr:hover{
+    cursor: pointer;
+>>>>>>> 027a8eddb049ff671a4979441d9e03857b69b851
 }
 
 #newUserBtn{
