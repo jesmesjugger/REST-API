@@ -7,9 +7,6 @@ use PHPMailer\PHPMailer\Exception;
 require (__DIR__.'/../vendor/autoload.php');
 
 // Instantiation and passing `true` enables exceptions
-const USERNAME = "username";
-const EMAIL = "email";
-const PASSWORD = "password";
 $mail = new PHPMailer(true);
 
 if(isset($_POST["register_btn"])){

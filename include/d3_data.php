@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__."/../models/API.php");
+include_once(__DIR__."/../models/User.php");
 
 if(!isset($_SESSION)){ session_start(); }
 $username = $_SESSION['user'];

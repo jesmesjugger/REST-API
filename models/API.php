@@ -40,6 +40,10 @@ class API{
     public static function admin_getSingleUser($id,$username,$password){
         return self::$api."user/$id?username=\"$username\"&pass=\"$password\"";
     }
+
+    public static function admin_getUpdateUser($id,$username,$password){
+        return self::$api."update_user/$id?username=\"$username\"&pass=\"$password\"";
+    }
     
 
     
