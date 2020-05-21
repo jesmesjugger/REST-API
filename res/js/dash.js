@@ -43,8 +43,9 @@ $(document).ready(function(){
 
     // function fetchLocalStorageData(){
     //     var pathArr = window.location.pathname.split("/");
+    //     console.log(pathArr);
 
-    //     if(pathArr[pathArr.length-2] == "update"){
+    //     if(pathArr[pathArr.length-2] == "test.php"){
     //         if(localStorage.getItem("data")){
     //             //var row_obj = JSON.parse(localStorage.getItem('data'));
 

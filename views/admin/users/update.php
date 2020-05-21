@@ -61,8 +61,8 @@ if (!isLoggedIn()) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <?php echo display_error(); ?>
-            <?php echo display_success(); ?>
+            <?php echo show_admin_errors(); ?>
+            <?php echo show_admin_success(); ?>
             <h4>Update User</h4>
             <hr>
             <div class="row">
@@ -76,7 +76,7 @@ if (!isLoggedIn()) {
                 <div class="col-md-9 py-3" style="border: 1px solid rgba(0,0,0,0.1); border-radius: 8px">
                     <div class="card" style="border:none;">
                         <div id="detailsForm" class="form-content-div">
-                            <form action="index.php" method="POST">
+                            <form action="" method="POST">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Full names</label>
                                     <div class="col-sm-10">
@@ -98,14 +98,14 @@ if (!isLoggedIn()) {
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" name="password" required>
+                                        <input type="password" class="form-control" name="password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Role</label>
                                     <div class="col-sm-10">
                                         <select name="role" class="form-control" id="user_type" required>
-                                            <option value="0" selected disabled hidden>Current role: <?php echo $user->getRole() == 1? "User":"Admin"; ?></option>
+                                            <option value="0" selected hidden>Current role: <?php echo $user->getRole() == 1? "User":"Admin"; ?></option>
                                             <option value="1">User</option>
                                             <option value="2">Admin</option>
                                         </select>
