@@ -29,6 +29,7 @@ if (!isLoggedIn()) {
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
             <a class="navbar-brand" href="?"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
+            <div class="spacer"></div>
             <div class="dropdown mr-1">
                 <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php echo $_SESSION['name'];?>
@@ -38,7 +39,7 @@ if (!isLoggedIn()) {
                     <a class="dropdown-item" href="create.php?logout_btn=true"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a>
                 </div>
             </div>
-            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
+            <button id="navToggler" class="navbar-toggler hidden" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -20,15 +20,38 @@ if($file == "update.php"){
 }
 
 if(isset($_POST['update_details_btn'])){
+    $data = array();
     $tableUsr = unserialize($_SESSION['selectedUser']);
-    $updt_username = trim($_POST[USERNAME]) == $tableUsr->getUsername() ? "" : trim($_POST[USERNAME]);
-    $updt_fullname = trim($_POST["name"]) == $tableUsr->getName() ? "" : trim($_POST["name"]);
-    $updt_email = trim($_POST[EMAIL]) == $tableUsr->getEmail() ? "" : trim($_POST[EMAIL]);
-    $updt_role = $_POST["role"] == 0? $tableUsr->getRole() : $_POST["role"];
-    $updt_password = strlen($_POST[PASSWORD]) == 0 ? "" : $_POST[PASSWORD];
+    $updt_username = trim($_POST[USERNAME]);
+    $updt_fullname = trim($_POST["name"]);
+    $updt_email = trim($_POST[EMAIL]);
+    $updt_role = $_POST["role"];
+    $updt_password = $_POST[PASSWORD];
 
-    updateUser($updt_username,$updt_fullname,$updt_email,$updt_role,$updt_password);
+    if($updt_username != $tableUsr->getUsername()){
+        if(strlen($updt_username) == 0){array_push($admin_errors,"Username field cannot be empty");}
+        else{array_push($data,"user=>$updt_username");}
+    }
+    if($updt_fullname != $tableUsr->getName()){
+        if(strlen($updt_fullname) == 0){array_push($admin_errors,"Full names cannot be empty");}
+        else{array_push($data,"name=>$updt_fullname");} 
+    }
+    if($updt_email != $tableUsr->getEmail()){
+        if(strlen($updt_fullname) == 0){array_push($admin_errors,"Email cannot be empty");}
+        else{array_push($data,"email=>$updt_email");} 
+    }
+    if($updt_password != 0){
+        if(strlen($updt_password) < 4 ){array_push($admin_errors,"Minimum password length is 4 characters");}
+        else {array_push($data,"password=>$updt_username");}
+    }
+    if($updt_role != 0){
+        array_push($data,"role=>$updt_role");
+    }
+
+
+    if(count($admin_errors) == 0){updateUser($data);}
 }
+
 
 function isUserAdmin(){ 
     return $_SESSION['role']==2;
@@ -69,12 +92,10 @@ function getSingleUser(){
     } 
 }
 
-function updateUser($username, $name, $email, $role, $pass){
+function updateUser($data){
     global $success_message,$admin_errors;
     if(isUserAdmin()){
-        $data = array(USERNAME=> $username, 'name'=> $name, 'email'=> $email, 'role'=> $role, PASSWORD=> $pass);
-        $url = API::admin_getUpdateUser($_GET['id'],$_SESSION['user'],$_SESSION['pass']);
-
+        $url = API::admin_getUserOperationsURL($_GET['id'],$_SESSION['user'],$_SESSION['pass']);
         $ch = curl_init($url);
         curl_setopt_array($ch, array(
             CURLOPT_RETURNTRANSFER=>true,
@@ -85,6 +106,7 @@ function updateUser($username, $name, $email, $role, $pass){
         $result_json = curl_exec($ch);
         $response = json_decode($result_json,true);
         curl_close($ch);
+        var_dump($response);
 
         if(isset($response["message"])){
             $custom_errors = $response["errors"];
@@ -97,11 +119,14 @@ function updateUser($username, $name, $email, $role, $pass){
                 }
             }
         }
-        else if($response["status_message"] == "OK"){
+        else if($response[STATUS_MESS] != "OK"){
+            array_push($admin_errors, $response[STATUS_MESS]);
+        }
+        else if($response[STATUS_MESS] == "OK"){
             $success_message = "User details updated";
             getSingleUser();
-            removeSelectedUser();
         }
+
     }
     else{
         die(UNAUTHORIZED);
@@ -141,6 +166,10 @@ function removeSelectedUser(){
     if($_SESSION['selectedUser']){
         unset($_SESSION['selectedUser']);
     }
+}
+
+function deleteUser($id){
+    echo $id;
 }
 
 ?>

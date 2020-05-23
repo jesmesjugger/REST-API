@@ -33,10 +33,30 @@ $(document).ready(function(){
         ]
     });
 
-    $('#usersTable').DataTable({
+    var usersTable = $('#usersTable').DataTable({
         "columnDefs": [
           { "orderable": false, "targets": 7 }
         ]
+    });
+
+    $('.fa-trash-alt').on('click',function(){
+        let row_id = $(this).closest("tr").find(".id").text();
+        var selection = confirm("Are you sure you want to delete this user?");
+        
+        if(selection == true){
+            $.ajax({
+                url:"../../../include/ajax.php",
+                data: {"deleteID": row_id},
+                type: "POST",
+                success:function(res){
+                    console.log("response: "+res);
+                },
+                error: function(){
+                    console.log("failed to send");
+                }
+            });
+    
+        }
     });
     
 });

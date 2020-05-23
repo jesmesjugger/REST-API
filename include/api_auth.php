@@ -46,15 +46,14 @@ function login($username, $password){
     if (count($errors) == 0) {
         $url = API::getLoginApi();
         $data = array(
-            USERNAME => urlencode($username),
-            PASSWORD => urlencode($password)
+            USERNAME => $username,
+            PASSWORD => $password
         );
-        $data_string = http_build_query($data);
         
         $ch = curl_init($url);
         //set the url, number of POST vars, POST data
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, API::getHeaders());
         $result_json = curl_exec($ch);
@@ -64,25 +63,32 @@ function login($username, $password){
         if($response == null){
             array_push($errors, "Invalid username/password");
         }
-        else {
-            //If connection is established
-            if($response[STATUS_MESS] != "OK"){
-                array_push($errors, $response[STATUS_MESS]);
+        else if(isset($response["message"])){
+            $error_fields = [USERNAME, PASSWORD];
+            $custom_errors = $response["errors"];
+
+            foreach($error_fields as $fields){
+                if(isset($custom_errors[$fields])){
+                    for($i = 0; $i < count($custom_errors[$fields]); $i++){
+                        array_push($errors,$custom_errors[$fields][$i]);
+                    }
+                }
+            }
+        }
+        else if($response[STATUS_MESS]=="OK"){
+            $profile = "Profile";
+            $_SESSION['id'] = $response[$profile]["id"];
+            $_SESSION['user'] = $response[$profile][USERNAME];
+            $_SESSION['name'] = $response[$profile]["name"];
+            $_SESSION[EMAIL] = $response[$profile][EMAIL];
+            $_SESSION['role'] = $response[$profile]["role"];
+            $_SESSION['pass'] = $password;
+
+            if($response[$profile]["role"] == "2"){
+                header("Location: views/admin/home/");
             }
             else {
-                $profile = "Profile";
-                $_SESSION['id'] = $response[$profile]["id"];
-                $_SESSION['user'] = $response[$profile]["username"];
-                $_SESSION['name'] = $response[$profile]["name"];
-                $_SESSION[EMAIL] = $response[$profile][EMAIL];
-                $_SESSION['role'] = $response[$profile]["role"];
-                $_SESSION['pass'] = $password;
-                if($response[$profile]["role"] == "2"){
-                    header("Location: views/admin/home/");
-                }
-                else {
-                    header("Location: views/dashboard/");
-                }
+                header("Location: views/dashboard/");
             }
         }
     }
@@ -121,11 +127,8 @@ function create_user($name, $username, $email, $role, $password, $confirmPass){
     if(count($errors)==0){
         $url = API::getCreateApi();
         $data = array(
-            'name' => $name,
-            USERNAME => $username,
-            EMAIL => $email,
-            'role' => $role,
-            PASSWORD => $password
+            'name' => $name, USERNAME => $username,
+            EMAIL => $email, 'role' => $role, PASSWORD => $password
         );
         
         $ch = curl_init($url);
@@ -142,35 +145,30 @@ function create_user($name, $username, $email, $role, $password, $confirmPass){
         if($response == null){
             array_push($errors, "User cannot be created, try again later.");
         }
-        else {
+        else if(isset($response["message"])){
             //Connection Successful but request has errors
-            if(isset($response["message"])){
-                $error_fields = ["name",USERNAME,EMAIL,"role",PASSWORD];
-                $custom_errors = $response["errors"];
+            $error_fields = ["name",USERNAME,EMAIL,"role",PASSWORD];
+            $custom_errors = $response["errors"];
 
-                foreach($error_fields as $fields){
-                    if(isset($custom_errors[$fields])){
-                        for($i = 0; $i < count($custom_errors[$fields]); $i++){
-                            array_push($errors,$custom_errors[$fields][$i]);
-                        }
+            foreach($error_fields as $fields){
+                if(isset($custom_errors[$fields])){
+                    for($i = 0; $i < count($custom_errors[$fields]); $i++){
+                        array_push($errors,$custom_errors[$fields][$i]);
                     }
                 }
             }
-            else{
-                //IF connection successful and no errors
-                if($response[STATUS_MESS]=="OK"){
-                    $success_message = "User creation success!";
-                    include_once("secure_email_code.php");
-                }
-            }
-        }  
+        } 
+        else if($response[STATUS_MESS]=="OK"){
+            $success_message = "User creation success!";
+            include_once("secure_email_code.php");
+        }
     }
 }
 
 function display_error() {
     global $errors;
     if (count($errors) > 0){
-        echo '<div class="alert alert-danger alert-dismissible fade show">';
+        echo '<div class="alert alert-danger alert-dismissible fade show mt-2">';
         echo '<h6>';
         foreach ($errors as $error){
             echo $error." ";

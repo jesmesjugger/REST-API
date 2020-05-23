@@ -5,6 +5,10 @@ GENERAL
     display: none;
 }
 
+.spacer {
+    flex: 1;
+}
+
 /**
 DASHBOARD CONTENT
 **/

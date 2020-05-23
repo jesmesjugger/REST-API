@@ -41,8 +41,8 @@ class API{
         return self::$api."user/$id?username=\"$username\"&pass=\"$password\"";
     }
 
-    public static function admin_getUpdateUser($id,$username,$password){
-        return self::$api."update_user/$id?username=\"$username\"&pass=\"$password\"";
+    public static function admin_getUserOperationsURL($id,$username,$password){
+        return self::$api."user/$id?user=\"$username\"&pass=\"$password\"";
     }
     
 

@@ -3,12 +3,12 @@ $(document).ready(function(){
      * Navbar Resize
      */
     $(window).bind("load resize", function () {
-        if ($(this).width() < 768) {
-            $('div.sidebar-collapse').addClass('collapse')
-            $('#navToggler').removeClass('hidden');
-        } else {
+        if ($(this).width() > 750) {
             $('div.sidebar-collapse').removeClass('collapse')
             $('#navToggler').addClass('hidden');
+        } else {
+            $('div.sidebar-collapse').addClass('collapse')
+            $('#navToggler').removeClass('hidden');
         }
     });
 
@@ -40,29 +40,5 @@ $(document).ready(function(){
             $('#rolesForm').removeClass('hidden');
         }
     }
-
-    // function fetchLocalStorageData(){
-    //     var pathArr = window.location.pathname.split("/");
-    //     console.log(pathArr);
-
-    //     if(pathArr[pathArr.length-2] == "test.php"){
-    //         if(localStorage.getItem("data")){
-    //             //var row_obj = JSON.parse(localStorage.getItem('data'));
-
-    //             $.ajax({
-    //                 url:'../../../../include/admin_functions.php',
-    //                 type: "POST",
-    //                 data: {"data": "1234567890"},
-    //                 success: function(res){
-    //                     console.log(res);
-    //                 },
-    //                 error: function() {
-    //                     console.log("Failed");
-    //                 }
-    //             });  
-
-    //         }
-    //     }
-    // }
     
 });

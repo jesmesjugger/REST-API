@@ -28,6 +28,7 @@ if (!isLoggedIn()) {
             <?php elseif($_SESSION["role"]=="2"): ?>
                 <a class="navbar-brand" href="../admin/home/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
             <?php endif; ?> 
+            <div class="spacer"></div>
             <div class="dropdown mr-1">
                 <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php echo $_SESSION['name'];?>
@@ -37,7 +38,7 @@ if (!isLoggedIn()) {
                     <a class="dropdown-item" href="index.php?logout_btn=true"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a>
                 </div>
             </div>
-            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
+            <button id="navToggler" class="navbar-toggler hidden" type="button" data-toggle="collapse" data-target=".sidebar-collapse"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -67,7 +68,7 @@ if (!isLoggedIn()) {
 
         <div id="page-wrapper">
             <div id="profile-section" class="text-center mb-4">
-                <p><i id="profile-section-icon" class="fa fa-user-circle"></i></p>
+                <h1><i id="profile-section-icon" class="fa fa-user-circle"></i></h1>
                 <h5><strong><?php echo $_SESSION['name']?></strong></h5>
             </div>
 

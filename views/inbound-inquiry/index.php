@@ -29,7 +29,8 @@ if (!isLoggedIn()) {
                 <a class="navbar-brand" href="../dashboard/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
             <?php elseif($_SESSION["role"]=="2"): ?>
                 <a class="navbar-brand" href="../admin/home/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
-            <?php endif; ?> 
+            <?php endif; ?>
+            <div class="spacer"></div>
             <div class="dropdown mr-1">
                 <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php echo $_SESSION['name'];?>
@@ -39,7 +40,7 @@ if (!isLoggedIn()) {
                     <a class="dropdown-item" href="index.php?logout_btn=true"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a>
                 </div>
             </div>
-            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse"
+            <button id="navToggler" class="navbar-toggler hidden" type="button" data-toggle="collapse"
                 data-target=".sidebar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

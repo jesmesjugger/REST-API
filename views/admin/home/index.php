@@ -2,13 +2,9 @@
 include('../../../include/api_auth.php');
 include('../../../include/admin_functions.php');
 
-if (!isAdmin()) {
-	logout();
-}
-
-if (!isLoggedIn()) {
-    header('location: ../../../');    
-}
+if (!isAdmin()) {logout();}
+if (!isLoggedIn()) {header('location: ../../../');    }
+removeSelectedUser();
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +30,7 @@ if (!isLoggedIn()) {
             <?php elseif($_SESSION["role"]=="2"): ?>
                 <a class="navbar-brand" href="../home/"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
             <?php endif; ?>
+            <div class="spacer"></div>
             <div class="dropdown mr-1">
                 <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php echo $_SESSION['name'];?>
@@ -43,7 +40,7 @@ if (!isLoggedIn()) {
                     <a class="dropdown-item" href="index.php?logout_btn=true"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a>
                 </div>
             </div>
-            <button id="navToggler" class="navbar-toggler" type="button" data-toggle="collapse"
+            <button id="navToggler" class="navbar-toggler hidden" type="button" data-toggle="collapse"
                 data-target=".sidebar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -96,14 +93,14 @@ if (!isLoggedIn()) {
                                     $update_date = date('d-m-Y',strtotime($user->updated_at));
                                     $update_time = date('H:i:s',strtotime($user->updated_at));
                                     echo "<tr>";
-                                    echo "<$td>".$id."</$td>";
+                                    echo "<$td class=\"id\">".$id."</$td>";
                                     echo "<$td>".$user->username."</$td>";
                                     echo "<$td>".$user->email."</$td>";
                                     echo "<$td>".$user->name."</$td>";
                                     echo $user->role==1? "<$td>User</$td>" : "<$td>Admin</$td>";
                                     echo "<$td>$create_date $create_time</$td>";
                                     echo "<$td>$update_date $update_time</$td>";
-                                    echo "<$td>".'<a href="../users/update.php?id='.$id.'"><i class="fas fa-user-edit"></i></a>'."</$td>";
+                                    echo "<$td>".'<a href="../users/update.php?id='.$id.'"><i class="fas fa-user-edit"></i></a> <a href="#"><i class="fas fa-trash-alt"></i></a>'."</$td>";
                                     echo "</tr>";
                                 }
                             ?>
