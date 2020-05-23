@@ -33,7 +33,7 @@ $(document).ready(function(){
         ]
     });
 
-    var usersTable = $('#usersTable').DataTable({
+    $('#usersTable').DataTable({
         "columnDefs": [
           { "orderable": false, "targets": 7 }
         ]
@@ -49,7 +49,8 @@ $(document).ready(function(){
                 data: {"deleteID": row_id},
                 type: "POST",
                 success:function(res){
-                    console.log("response: "+res);
+                    alert(res);
+                    window.location.reload();
                 },
                 error: function(){
                     console.log("failed to send");

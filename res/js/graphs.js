@@ -12,7 +12,7 @@ $(document).ready(function(){
 
     $.ajax({
         url: "../../include/d3_data.php",
-        credentials: "same-origin",
+        type: "GET",
         headers: {
             "Content-Type": "application/json",
           },

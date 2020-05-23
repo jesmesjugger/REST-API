@@ -4,7 +4,6 @@ include('../../../include/admin_functions.php');
 
 if (!isAdmin()) {logout();}
 if (!isLoggedIn()) {header('location: ../../../');    }
-removeSelectedUser();
 ?>
 
 <!DOCTYPE html>

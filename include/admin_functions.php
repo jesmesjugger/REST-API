@@ -106,7 +106,6 @@ function updateUser($data){
         $result_json = curl_exec($ch);
         $response = json_decode($result_json,true);
         curl_close($ch);
-        var_dump($response);
 
         if(isset($response["message"])){
             $custom_errors = $response["errors"];
@@ -168,8 +167,26 @@ function removeSelectedUser(){
     }
 }
 
-function deleteUser($id){
-    echo $id;
+function deleteUser($id, $user, $pass){
+    if(isUserAdmin()){
+        $url = API::admin_getUserOperationsURL($id,$user,$pass);
+        $ch = curl_init($url);
+        curl_setopt_array($ch, array(
+            CURLOPT_RETURNTRANSFER=>true,
+            CURLOPT_CUSTOMREQUEST=>'DELETE',
+            CURLOPT_HTTPHEADER=>API::getHeaders()
+        ));
+        $result_json = curl_exec($ch);
+        $response = json_decode($result_json,true);
+        curl_close($ch);
+
+        if($response["status_message"] != "OK"){
+            echo "Failed to delete user";
+        }
+        else if($response["status_message"] == "OK"){
+            echo "User deleted!";
+        }
+    }
 }
 
 ?>
