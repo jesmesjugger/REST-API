@@ -11,8 +11,9 @@ $(document).ready(function(){
     // });
 
     $.ajax({
-        url: "../../include/d3_data.php",
+        url: "../../include/ajax.php",
         type: "GET",
+        data: {"key":"d3"},
         headers: {
             "Content-Type": "application/json",
           },
