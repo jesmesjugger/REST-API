@@ -17,7 +17,7 @@
 			<img src="res/img/om_logo.png" class="brand-logo" alt="logo">
 		</div>
 		<div class="card mx-auto my-5">
-			<h2 class="card-header text-center">OM Portal</h2>
+			<h5 class="card-header text-left">Login</h5>
 			<div class="card-body">
 			
 				<form action="index.php" method="POST">
