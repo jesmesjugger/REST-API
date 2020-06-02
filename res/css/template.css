@@ -8,13 +8,13 @@ body {
 
 #wrapper {
     width: 100%;
-    background-color: #02664f;
+    background: linear-gradient(to bottom, #50b848 1%, #009677 100%);
 }
 
 #page-wrapper {
     padding: 25px;
     min-height: 600px;
-    background: #ffffff;
+    background: #f8f9fc;
 }
 
 .pad-top {

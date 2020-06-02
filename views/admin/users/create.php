@@ -27,7 +27,7 @@ if (!isLoggedIn()) {
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
-            <a class="navbar-brand" href="?"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="#">Old <strong>Mutual</strong></a>
             <div class="spacer"></div>
             <div class="dropdown mr-1">
                 <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,54 +61,55 @@ if (!isLoggedIn()) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <?php echo display_error(); ?>
-            <?php echo display_success(); ?>
-            <h4>Create User</h4>
-            <hr>
-            <form action="create.php" method="POST">
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name" required>
+            <div class="card py-2 px-3">
+                <?php echo display_error(); ?>
+                <?php echo display_success(); ?>
+                <h4>Create User</h4>
+                <hr>
+                <form action="create.php" method="POST">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="username" required>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" name="email" required>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Role</label>
-                    <div class="col-sm-10">
-                        <select name="role" class="form-control" id="user_type" required>
-                            <option value="1">User</option>
-                            <option value="2">Admin</option>
-                        </select>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Role</label>
+                        <div class="col-sm-10">
+                            <select name="role" class="form-control" id="user_type" required>
+                                <option value="1">User</option>
+                                <option value="2">Admin</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" name="password" required>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Confirm password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" name="confirmPass" required>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Confirm password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="confirmPass" required>
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-outline-success mx-auto" name="register_btn" style="display:block;"> + Create user</button>
-            </form>
+                    <button type="submit" class="btn btn-outline-success mx-auto" name="register_btn" style="display:block;"> + Create user</button>
+                </form>
+            </div>
         </div><!-- END PAGE WRAPPER  -->
-
     </div><!-- /. WRAPPER  -->
 </body>
 

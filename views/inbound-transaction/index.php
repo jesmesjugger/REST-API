@@ -26,9 +26,9 @@ if (!isLoggedIn()) {
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
         <?php if($_SESSION["role"]=="1"): ?>
-                <a class="navbar-brand" href="../dashboard/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="../dashboard/">Old <strong>Mutual</strong></a>
             <?php elseif($_SESSION["role"]=="2"): ?>
-                <a class="navbar-brand" href="../admin/home/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="../admin/home/">Old <strong>Mutual</strong></a>
             <?php endif; ?>
             <div class="spacer"></div>
             <div class="dropdown mr-1">
@@ -63,19 +63,19 @@ if (!isLoggedIn()) {
                         <a href="../inbound-inquiry/">Inbound Inquiry</a>
                     </li>
                     <li class="active-link">
-                        <a href="?">Inbound Transactions</a>
+                        <a href="#">Inbound Transactions</a>
                     </li>
                 </ul>
             </div>
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <div class="table-container">
+            <div class="card py-2 px-3">
                 <h4><strong>Inbound Transactions</strong></h4>
-                <div class="tableDiv">
-                    <table id="transactionTable" class="table cell-border data-table">
+                <div class="table-responsive">
+                    <table id="transactionTable" class="table data-table">
                         <thead>
-                            <tr class="thead-dark">
+                            <tr class="thead-light">
                                 <th scope="col">#</th>
                                 <th scope="col">Transaction Type</th>
                                 <th scope="col">ID Number Type</th>
@@ -123,8 +123,8 @@ if (!isLoggedIn()) {
                             ?>
                         </tbody>
                     </table>
-                </div> <!-- end #tableDiv w/ claims -->
-            </div> <!-- end .Table-Container div -->
+                </div>
+            </div>
         </div><!-- END PAGE WRAPPER  -->
 
     </div><!-- /. WRAPPER  -->

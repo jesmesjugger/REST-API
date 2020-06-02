@@ -24,11 +24,7 @@ if (!isLoggedIn()) {header('location: ../../../');    }
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
-            <?php if($_SESSION["role"]=="1"): ?>
-                <a class="navbar-brand" href="../dashboard/"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
-            <?php elseif($_SESSION["role"]=="2"): ?>
-                <a class="navbar-brand" href="../home/"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
-            <?php endif; ?>
+            <a class="navbar-brand" href="#">Old <strong>Mutual</strong></a></a>
             <div class="spacer"></div>
             <div class="dropdown mr-1">
                 <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +46,7 @@ if (!isLoggedIn()) {header('location: ../../../');    }
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="active-link">
-                        <a href="?">Home</a>
+                        <a href="#">Home</a>
                     </li>
                     <li>
                         <a href="../../inbound-inquiry/">Inbound Inquiry</a>
@@ -63,12 +59,12 @@ if (!isLoggedIn()) {header('location: ../../../');    }
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <div class="table-container">
+            <div class="card py-2 px-3">
                 <a id="newUserBtn" href="../users/create.php" class="btn btn-outline-success mb-2">Create new user</a>
-                <div class="tableDiv">
-                    <table id="usersTable" class="table cell-border table-hover data-table">
+                <div class="table-responsive">
+                    <table id="usersTable" class="table table-hover data-table">
                         <thead>
-                            <tr class="thead-dark">
+                            <tr class="thead-light">
                                 <th scope="col">id</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Email</th>
@@ -105,7 +101,7 @@ if (!isLoggedIn()) {header('location: ../../../');    }
                             ?>
                         </tbody>
                     </table>
-                </div> <!-- end #tableDiv w/ inquiry -->
+                </div>
             </div> <!-- end .Table-Container div -->
         </div><!-- END PAGE WRAPPER  -->
 

@@ -26,9 +26,9 @@ if (!isLoggedIn()) {
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
             <?php if($_SESSION["role"]=="1"): ?>
-                <a class="navbar-brand" href="../dashboard/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="../dashboard/">Old <strong>Mutual</strong></a>
             <?php elseif($_SESSION["role"]=="2"): ?>
-                <a class="navbar-brand" href="../admin/home/"><img src="../../res/img/om_text_logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="../admin/home/">Old <strong>Mutual</strong></a>
             <?php endif; ?>
             <div class="spacer"></div>
             <div class="dropdown mr-1">
@@ -60,7 +60,7 @@ if (!isLoggedIn()) {
                     </li>
                 <?php endif; ?> 
                     <li class="active-link">
-                        <a href="?">Inbound Inquiry</a>
+                        <a href="#">Inbound Inquiry</a>
                     </li>
                     <li>
                         <a href="../inbound-transaction/">Inbound Transactions</a>
@@ -70,19 +70,18 @@ if (!isLoggedIn()) {
         </nav><!-- END NAV SIDE  -->
 
         <div id="page-wrapper">
-            <div class="table-container">
+            <div class="card py-2 px-3">
                 <h4><strong>Inbound Inquiries</strong></h4>
-                <div class="tableDiv">
-                    <table id="inquiryTable" class="table cell-border data-table">
+                <div class="table-responsive">
+                    <table id="inquiryTable" class="table data-table">
                         <thead>
-                            <tr class="thead-dark">
+                            <tr class="thead-light">
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Phone Number</th>
                                 <th scope="col">Inquiry Type</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Form ID</th>
-                                <th scope="col">Status ID</th>
                                 <th scope="col">Created at</th>
                             </tr>
                         </thead>
@@ -91,7 +90,6 @@ if (!isLoggedIn()) {
                                 $result = getResultObject("inquiry");
                                 $info_array = ($result->RequestData);
                                 $td = "td";
-
                                 foreach($info_array as $inquiry){
                                     echo "<tr>";
                                     echo "<$td>".$inquiry->id."</$td>";
@@ -100,15 +98,14 @@ if (!isLoggedIn()) {
                                     echo "<$td>".$inquiry->inquiry_type."</$td>";
                                     echo "<$td>".$inquiry->product_name."</$td>";
                                     echo "<$td>".$inquiry->form_id."</$td>";
-                                    echo "<$td>".$inquiry->status_id."</$td>";
                                     echo "<$td>".date('d M, Y',strtotime($inquiry->created_at))."</$td>";
                                     echo "</tr>";
                                 }
                             ?>
                         </tbody>
                     </table>
-                </div> <!-- end #tableDiv w/ inquiry -->
-            </div> <!-- end .Table-Container div -->
+                </div>
+            </div>
         </div><!-- END PAGE WRAPPER  -->
 
     </div><!-- /. WRAPPER  -->

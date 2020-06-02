@@ -16,6 +16,11 @@ body {
     font-size: 14px;
 }
 
+.navbar-brand {
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
 .nav-link.dropdown-toggle {
     color: white;
 }
@@ -46,10 +51,7 @@ table {
 
 .table-container {
     padding: 5px;
-}
-
-.tableDiv{
-    overflow-x: auto;
+    background: red
 }
 
 .data-table{
@@ -57,22 +59,18 @@ table {
     width: 100%;
 }
 
-<<<<<<< HEAD
 td>a {
     color: #02c496;
 }
 
 td>a:hover {
     color: #026b53;
-=======
-.table-hover tr:hover{
-    cursor: pointer;
->>>>>>> 027a8eddb049ff671a4979441d9e03857b69b851
 }
 
 #newUserBtn{
     border: 1px solid #049875 ;
     color: #049875;
+    width: fit-content
 }
 
 #newUserBtn:hover{

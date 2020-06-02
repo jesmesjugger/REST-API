@@ -28,7 +28,7 @@ if (!isLoggedIn()) {
 <body>
     <div id="wrapper">
         <nav id="top-navbar" class="navbar navbar-dark bg-dark" aria-label="top-navbar">
-            <a class="navbar-brand" href="?"><img src="../../../res/img/om_text_logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="#">Old <strong>Mutual</strong></a>
             <div class="spacer"></div>
             <div class="dropdown mr-1">
                 <a class="nav-link dropdown-toggle py-0" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
